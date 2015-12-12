@@ -6,7 +6,8 @@ public class PlayerManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.W))
+        #region Movement
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (matrixManager.CanReach(Direction.North))
             {
@@ -44,6 +45,19 @@ public class PlayerManager : MonoBehaviour {
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
                 transform.Translate(1, diff - 1, 0);
             }
+        }
+        #endregion
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            matrixManager.IncreaseHeight(Location);
+            transform.Translate(0, 1, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (matrixManager.DecreaseHeight(Location))
+                transform.Translate(0, -1, 0);
         }
     }
 

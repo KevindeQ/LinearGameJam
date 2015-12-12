@@ -35,10 +35,7 @@ public class MatrixManager : MonoBehaviour
 
                 for (int i = 0; i < matrix[row, col]; i++)
                 {
-                    Transform blockInst = (Transform)Instantiate(block);
-                    blockInst.name = string.Format("Block {0}", i + 1);
-                    blockInst.parent = tower.transform;
-                    blockInst.localPosition = new Vector3(0, i, 0);
+                    var blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
 
                     if (row == startTower.x && col == startTower.y)
                     {
@@ -51,6 +48,21 @@ public class MatrixManager : MonoBehaviour
         playerManager.transform.position = startPosition;
         playerManager.Location = startTower;
 	}
+
+    Transform CreateBlock(string name, Transform parentTower)
+    {
+        Transform blockInst = (Transform)Instantiate(block);
+        blockInst.name = name;
+        blockInst.parent = parentTower.transform;
+        blockInst.localPosition = new Vector3(0, parentTower.childCount - 1, 0);
+
+        return blockInst;
+    }
+
+    void RemoveBlock(Transform parentTower)
+    {
+        Destroy(parentTower.GetChild(parentTower.childCount - 1).gameObject);
+    }
 
 	public bool CanReach (Direction dir)
     {
@@ -83,5 +95,52 @@ public class MatrixManager : MonoBehaviour
     public int GetHeight (int x, int y)
     {
         return matrix[y, x];
+    }
+
+    public void SetHeight(Vector2 location, int value)
+    {
+        SetHeight((int)location.x, (int)location.y, value);
+    }
+
+    public void SetHeight (int x, int y, int value)
+    {
+        matrix[y, x] = value;
+        Transform tower = transform.FindChild(string.Format("Tower ({0}, {1})", x, y));
+        if (value > tower.childCount)
+        {
+            for (int i = 0; i < value - tower.childCount; i++)
+            {
+                CreateBlock(string.Format("Block {0}", i + tower.childCount), tower);
+            }
+        } else if (value < tower.childCount)
+        {
+            for (int i = 0; i < tower.childCount - value; i++)
+            {
+                RemoveBlock(tower);
+            }
+        }
+    }
+
+    public void IncreaseHeight(Vector2 location)
+    {
+        IncreaseHeight((int)location.x, (int)location.y);
+    }
+
+    public void IncreaseHeight(int x, int y)
+    {
+        SetHeight(x, y, GetHeight(x, y) + 1);
+    }
+
+    public bool DecreaseHeight(Vector2 location)
+    {
+        return DecreaseHeight((int)location.x, (int)location.y);
+    }
+
+    public bool DecreaseHeight(int x, int y)
+    {
+        if (GetHeight(x, y) == 0) return false;
+
+        SetHeight(x, y, GetHeight(x, y) - 1);
+        return true;
     }
 }
