@@ -16,5 +16,6 @@ public class PlayingFieldState : MonoBehaviour
 	
 	void Update()
     {
+
     }
 }
