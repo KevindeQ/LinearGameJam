@@ -5,14 +5,13 @@ public class MatrixManager : MonoBehaviour
 {
 	public Transform block;
     public Transform startBlock;
+    public Transform banana;
 
-	Matrix matrix;
+    public static int difference = 1;
+
+    Matrix matrix;
     Matrix storedMatrix;
     Vector3 startPosition;
-
-    void Start()
-    {
-	}
 
     public void Init ()
     {
@@ -27,14 +26,20 @@ public class MatrixManager : MonoBehaviour
                 tower.transform.parent = transform;
                 tower.transform.localPosition = new Vector3(col - columns / 2.0f, 0, -1 * (row - rows / 2.0f));
                 tower.name = string.Format("Tower ({0}, {1})", col, row);
-
+                
                 for (int i = 0; i < matrix[row, col]; i++)
                 {
                     Transform blockInst;
-                    if (col == 0 && row == 0)
+                    if (col == matrix.StartLocation.x && row == matrix.StartLocation.y && i + 1 == matrix[row, col])
                         blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform, true);
                     else
                         blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
+
+                    if (col == matrix.BananaLocation.x && row == matrix.BananaLocation.y)
+                    {
+                        if (banana != null)
+                        banana.position = blockInst.position;
+                    }
                 }
             }
         }
@@ -42,7 +47,6 @@ public class MatrixManager : MonoBehaviour
 
     public void ModifyMatrix(Matrix NewMatrix)
     {
-        Debug.Log(transform.parent.name);
         for (int col = 0; col < matrix.GetColumnCount(); col++)
         {
             for (int row = 0; row < matrix.GetRowCount(); row++)
@@ -55,10 +59,18 @@ public class MatrixManager : MonoBehaviour
                     if (diff < 0)
                     {
                         IncreaseHeight(col, row);
+                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
+                        {
+                            banana.Translate(0, 1, 0);
+                        }
                     }
                     else if (diff > 0)
                     {
                         DecreaseHeight(col, row);
+                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
+                        {
+                            banana.Translate(0, -1, 0);
+                        }
                     }
                 }
             }
@@ -75,7 +87,7 @@ public class MatrixManager : MonoBehaviour
         if (startBlock)
         {
             startPosition = blockInst.position;
-            matrix.StartLocation = new Vector2(0, 0);
+            matrix.StartLocation = MenuManager.puzzleMatrix.StartLocation;
         }
         return blockInst;
     }

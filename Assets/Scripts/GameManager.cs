@@ -17,9 +17,13 @@ public class GameManager : MonoBehaviour {
         puzzleMatrixManager.Init();
 
         preMultiplyMatrixManager.SetMatrix(Matrix.DefaultMatrix(colCount, rowCount));
+        Matrix preMatrix = preMultiplyMatrixManager.GetMatrix();
+        preMatrix.StartLocation = new Vector2(preMatrix.GetColumnCount() - 1, preMatrix.GetRowCount() - 1);
         preMultiplyMatrixManager.Init();
 
         postMultiplyMatrixManager.SetMatrix(Matrix.DefaultMatrix(colCount, rowCount));
+        Matrix postMatrix = postMultiplyMatrixManager.GetMatrix();
+        postMatrix.StartLocation = new Vector2(postMatrix.GetColumnCount() - 1, postMatrix.GetRowCount() - 1);
         postMultiplyMatrixManager.Init();
 
         player.Init();

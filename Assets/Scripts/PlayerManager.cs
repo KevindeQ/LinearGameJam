@@ -86,6 +86,7 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log(Location);
             if (matrixManager.IsInBound(Location, Direction.West) && (matrixManager.CanReach(Location, Direction.West) || ctc.Selected != 1))
             {
                 Location = new Vector2(Location.x - 1, Location.y);
