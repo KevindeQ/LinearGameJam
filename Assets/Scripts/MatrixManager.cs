@@ -7,17 +7,15 @@ public class MatrixManager : MonoBehaviour
     public Transform startBlock;
 
 	Matrix matrix;
+    Matrix storedMatrix;
     Vector3 startPosition;
 
     void Start()
     {
-		matrix = new Matrix(new int[, ]
-        {
-			{ 1, 2, 3, 4 },
-			{ 2, 3, 4, 5 },
-            { 3, 4, 5, 6 },
-        });
-        
+	}
+
+    public void Init ()
+    {
         int rows = matrix.GetRowCount();
         int columns = matrix.GetColumnCount();
 
@@ -39,10 +37,8 @@ public class MatrixManager : MonoBehaviour
                         blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
                 }
             }
-		}
-
-        //
-	}
+        }
+    }
 
     public void ModifyMatrix(Matrix NewMatrix)
     {
@@ -96,17 +92,33 @@ public class MatrixManager : MonoBehaviour
 
         switch (dir) {
             case Direction.North:
-                if (locationY - 1 == -1) return false;
                 return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= 1;
             case Direction.South:
-                if (locationY + 1 == matrix.GetRowCount()) return false;
                 return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= 1;
             case Direction.West:
-                if (locationX - 1 == -1) return false;
                 return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= 1;
             case Direction.East:
-                if (locationX + 1 == matrix.GetColumnCount()) return false;
                 return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= 1;
+            default:
+                return false;
+        }
+    }
+
+    public bool IsInBound (Vector2 location, Direction dir)
+    {
+        int locationX = (int)location.x;
+        int locationY = (int)location.y;
+
+        switch (dir)
+        {
+            case Direction.North:
+                return !(locationY - 1 == -1);
+            case Direction.South:
+                return !(locationY + 1 == matrix.GetRowCount());
+            case Direction.West:
+                return !(locationX - 1 == -1);
+            case Direction.East:
+                return !(locationX + 1 == matrix.GetColumnCount());
             default:
                 return false;
         }
@@ -120,6 +132,16 @@ public class MatrixManager : MonoBehaviour
     public void SetMatrix (Matrix newMatrix)
     {
         matrix = newMatrix;
+    }
+
+    public void PushMatrix()
+    {
+        storedMatrix = matrix.Clone();
+    }
+
+    public Matrix PopMatrix()
+    {
+        return storedMatrix;
     }
 
     public int GetHeight(Vector2 location)

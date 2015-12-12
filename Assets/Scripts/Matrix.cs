@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Assertions;
+using System;
 
 public class Matrix
 {
@@ -9,7 +10,24 @@ public class Matrix
     public Matrix(int[,] Data)
     {
         this.Data = Data;
-    } 
+    }
+
+    public static Matrix DefaultMatrix(int cols, int rows)
+    {
+        int[,] matrix = new int[rows, cols];
+        for (int row = 0; row < rows; ++row)
+        {
+            for(int col = 0; col < cols; ++col)
+            {
+                if (row == col)
+                    matrix[row, col] = 1;
+                else
+                    matrix[row, col] = 0;
+            }
+        }
+
+        return new Matrix(matrix);
+    }
 
     public int GetRowCount() { return Data.GetLength(0); }
     public int GetColumnCount() { return Data.GetLength(1); }
@@ -46,4 +64,17 @@ public class Matrix
     }
 
     public Vector2 StartLocation { get; set;  }
+
+    public Matrix Clone()
+    {
+        int[,] NewMatrix = new int[GetRowCount(), GetColumnCount()];
+        for(int row = 0; row < GetRowCount(); ++row)
+        {
+            for (int col = 0; col < GetColumnCount(); ++col)
+                NewMatrix[row, col] = Data[row, col];
+        }
+
+
+        return new Matrix(NewMatrix);
+    }
 }
