@@ -1,0 +1,72 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class PlayerManager : MonoBehaviour {
+    public Vector2 startPosition;
+    public MatrixManager matrixManager;
+
+    void Start ()
+    {
+        transform.position = matrixManager.GetStartPosition();
+        Location = Vector2.zero;
+    }
+
+    // Update is called once per frame
+    void Update () {
+        #region Movement
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (matrixManager.CanReach(Location, Direction.North))
+            {
+                Location = new Vector2(Location.x, Location.y - 1);
+                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                transform.Translate(0, diff - 1, 1);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (matrixManager.CanReach(Location, Direction.South))
+            {
+                Location = new Vector2(Location.x, Location.y + 1);
+                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                transform.Translate(0, diff - 1, -1);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            if (matrixManager.CanReach(Location, Direction.West))
+            {
+                Location = new Vector2(Location.x - 1, Location.y);
+                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                transform.Translate(-1, diff - 1, 0);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (matrixManager.CanReach(Location, Direction.East))
+            {
+                Location = new Vector2(Location.x + 1, Location.y);
+                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                transform.Translate(1, diff - 1, 0);
+            }
+        }
+        #endregion
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            matrixManager.IncreaseHeight(Location);
+            transform.Translate(0, 1, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (matrixManager.DecreaseHeight(Location))
+                transform.Translate(0, -1, 0);
+        }
+    }
+
+    public Vector2 Location { get; set;  }
+}

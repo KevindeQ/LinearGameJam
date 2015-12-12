@@ -4,72 +4,183 @@ using System.Collections;
 public class MatrixManager : MonoBehaviour
 {
 	public Transform block;
+    public Transform startBlock;
 
-	private Matrix matrix;
-
-    private bool modified;
-    public bool IsModified
-    {
-        get { return modified; }
-        private set { modified = value; }
-    }
+	Matrix matrix;
+    Vector3 startPosition;
 
     void Start()
     {
 		matrix = new Matrix(new int[, ]
         {
-			{ 2, 2, 4, 3 },
-			{ 2, 2, 3, 1 },
-            { 1, 1, 5, 3 },
-            { 1, 1, 5, 3 },
+			{ 1, 2, 3, 4 },
+			{ 2, 3, 4, 5 },
+            { 3, 4, 5, 6 },
         });
-
-        GenerateMatrixVisualization();
-        modified = false;
-    }
-
-	void Update()
-    {
-        if (!modified)
-            return;
-
-        for (int i = 0; i < transform.childCount; i++)
-            Destroy(transform.GetChild(i).gameObject);
-
-        GenerateMatrixVisualization();
-        modified = false;
-    }
-
-    void GenerateMatrixVisualization()
-    {
+        
         int rows = matrix.GetRowCount();
         int columns = matrix.GetColumnCount();
 
-        for (int x = 0; x < columns; x++)
+        for (int col = 0; col < columns; col++)
         {
-            for (int z = 0; z < rows; z++)
+            for (int row = 0; row < rows; row++)
             {
                 GameObject tower = new GameObject();
                 tower.transform.parent = transform;
-                tower.transform.localPosition = new Vector3(x - columns / 2.0f, 0, -1 * (z - rows / 2.0f));
-                tower.name = string.Format("Tower ({0}, {1})", x, z);
+                tower.transform.localPosition = new Vector3(col - columns / 2.0f, 0, -1 * (row - rows / 2.0f));
+                tower.name = string.Format("Tower ({0}, {1})", col, row);
 
-                for (int i = 0; i < matrix[z, x]; i++)
+                for (int i = 0; i < matrix[row, col]; i++)
                 {
-                    Transform blockInst = (Transform)Instantiate(block);
-                    blockInst.name = string.Format("Block {0}", i + 1);
-                    blockInst.parent = tower.transform;
-                    blockInst.localPosition = new Vector3(0, i, 0);
+                    Transform blockInst;
+                    if (col == 0 && row == 0)
+                        blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform, true);
+                    else
+                        blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
+                }
+            }
+		}
+
+        //
+	}
+
+    public void ModifyMatrix(Matrix NewMatrix)
+    {
+        Debug.Log(transform.parent.name);
+        for (int col = 0; col < matrix.GetColumnCount(); col++)
+        {
+            for (int row = 0; row < matrix.GetRowCount(); row++)
+            {
+                int oldValue = matrix[row, col];
+                int newValue = NewMatrix[row, col];
+                int diff = oldValue - newValue;
+                for (int i = 0; i < Mathf.Abs(diff); i++)
+                {
+                    if (diff < 0)
+                    {
+                        IncreaseHeight(col, row);
+                    }
+                    else if (diff > 0)
+                    {
+                        DecreaseHeight(col, row);
+                    }
                 }
             }
         }
     }
 
-    public void ModifyMatrix(Matrix NewMatrix)
+    Transform CreateBlock(string name, Transform parentTower, bool startBlock = false)
     {
-        matrix = NewMatrix;
-        modified = true;
+        Transform blockInst = startBlock ? (Transform)Instantiate(this.startBlock) : (Transform)Instantiate(block);
+        blockInst.name = name;
+        blockInst.parent = parentTower.transform;
+        blockInst.localPosition = new Vector3(0, parentTower.childCount - 1, 0);
+
+        if (startBlock)
+        {
+            startPosition = blockInst.position;
+            matrix.StartLocation = new Vector2(0, 0);
+        }
+        return blockInst;
     }
 
-    public Matrix GetMatrix() { return matrix; }
+    void RemoveBlock(Transform parentTower)
+    {
+        DestroyImmediate(parentTower.GetChild(parentTower.childCount - 1).gameObject);
+    }
+
+	public bool CanReach (Vector2 location, Direction dir)
+    {
+        int locationX = (int)location.x;
+        int locationY = (int)location.y;
+
+        switch (dir) {
+            case Direction.North:
+                if (locationY - 1 == -1) return false;
+                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= 1;
+            case Direction.South:
+                if (locationY + 1 == matrix.GetRowCount()) return false;
+                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= 1;
+            case Direction.West:
+                if (locationX - 1 == -1) return false;
+                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= 1;
+            case Direction.East:
+                if (locationX + 1 == matrix.GetColumnCount()) return false;
+                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= 1;
+            default:
+                return false;
+        }
+    }
+
+    public Matrix GetMatrix ()
+    {
+        return matrix;
+    }
+
+    public void SetMatrix (Matrix newMatrix)
+    {
+        matrix = newMatrix;
+    }
+
+    public int GetHeight(Vector2 location)
+    {
+        return GetHeight((int)location.x, (int)location.y);
+    }
+
+    public int GetHeight (int x, int y)
+    {
+        return matrix[y, x];
+    }
+
+    public void SetHeight(Vector2 location, int value)
+    {
+        SetHeight((int)location.x, (int)location.y, value);
+    }
+
+    public void SetHeight (int x, int y, int value)
+    {
+        matrix[y, x] = value;
+        Transform tower = transform.FindChild(string.Format("Tower ({0}, {1})", x, y));
+        if (value > tower.childCount)
+        {
+            for (int i = 0; i < value - tower.childCount; i++)
+            {
+                CreateBlock(string.Format("Block {0}", i + tower.childCount), tower);
+            }
+        } else if (value < tower.childCount)
+        {
+            for (int i = 0; i < tower.childCount - value; i++)
+            {
+                RemoveBlock(tower);
+            }
+        }
+    }
+
+    public void IncreaseHeight(Vector2 location)
+    {
+        IncreaseHeight((int)location.x, (int)location.y);
+    }
+
+    public void IncreaseHeight(int x, int y)
+    {
+        SetHeight(x, y, GetHeight(x, y) + 1);
+    }
+
+    public bool DecreaseHeight(Vector2 location)
+    {
+        return DecreaseHeight((int)location.x, (int)location.y);
+    }
+
+    public bool DecreaseHeight(int x, int y)
+    {
+        if (GetHeight(x, y) == 0) return false;
+
+        SetHeight(x, y, GetHeight(x, y) - 1);
+        return true;
+    }
+
+    public Vector3 GetStartPosition ()
+    {
+        return startPosition;
+    }
 }

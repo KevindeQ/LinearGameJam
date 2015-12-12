@@ -17,6 +17,7 @@ public class Matrix
     public int this[int row, int column]
     {
         get { return Data[row, column]; }
+        set { Data[row, column] = value; }
     }
 
     public static Matrix Multiply(Matrix LHS, Matrix RHS)
@@ -43,4 +44,6 @@ public class Matrix
 
         return new Matrix(result);
     }
+
+    public Vector2 StartLocation { get; set;  }
 }

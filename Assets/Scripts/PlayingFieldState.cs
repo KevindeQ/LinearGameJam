@@ -16,12 +16,5 @@ public class PlayingFieldState : MonoBehaviour
 	
 	void Update()
     {
-        if (PreMultiplyMatrixManager.IsModified || PostMultiplyMatrixManager.IsModified)
-        {
-            Matrix NewMatrix = Matrix.Multiply(PreMultiplyMatrixManager.GetMatrix(), PuzzleMatrixManager.GetMatrix());
-            NewMatrix = Matrix.Multiply(NewMatrix, PostMultiplyMatrixManager.GetMatrix());
-
-            PuzzleMatrixManager.ModifyMatrix(NewMatrix);
-        }
     }
 }
