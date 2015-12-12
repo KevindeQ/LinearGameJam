@@ -24,9 +24,9 @@ public class MatrixManager : MonoBehaviour
             for (int z = 0; z < rows; z++)
             {
                 GameObject tower = new GameObject();
-                tower.transform.position = new Vector3(x - columns / 2.0f, 0, -1 * (z - rows / 2.0f));
-                tower.name = string.Format("Tower ({0}, {1})", x, z);
                 tower.transform.parent = transform;
+                tower.transform.localPosition = new Vector3(x - columns / 2.0f, 0, -1 * (z - rows / 2.0f));
+                tower.name = string.Format("Tower ({0}, {1})", x, z);
 
                 for (int i = 0; i < matrix[z, x]; i++)
                 {
