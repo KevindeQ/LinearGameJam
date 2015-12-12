@@ -5,23 +5,24 @@ public class MatrixMultiplication : MonoBehaviour {
 
 	int[, ] matrix = new int[, ]
 	{
-		{ 1, 1, 1},
-		{ 1, 1, 1},
-		{ 1, 1, 1},
+		{ 8, 9, 8, 2},
+		{ 3, 5, 6, 1},
+		{ 2, 3, 5, 3},
 	};
 	int[, ] matrix2 = new int[, ]
 	{
-		{ 2, 2, 2},
-		{ 2, 2, 2},
-		{ 2, 2, 2},
+		{ 8, 3, 1},
+		{ 1, 4, 8},
+		{ 3, 4, 1},
+		{ 4, 2, 3},
 	};
 
 	public int [,] MatrixMult(int[,] matrix1, int[,] matrix2) {
-		int [,] result = new int[,]{};
 
 		int rowMatrix1 = matrix1.GetLength(0);
 		int columnMatrix1 = matrix1.GetLength(1);
 		int columnMatrix2 = matrix2.GetLength(1);
+		int [,] result = new int[rowMatrix1,columnMatrix2];
 
 		for (int i = 0; i < rowMatrix1; i++) {
 			for (int j = 0; j < columnMatrix2; j++) {
@@ -56,7 +57,7 @@ public class MatrixMultiplication : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown ("f")) {
-			int [,] temp = new int[,]{};
+			int [,] temp = new int[99,99];
 			temp = MatrixMult(matrix, matrix2);
 			ShowMatrix(temp);
 		}
