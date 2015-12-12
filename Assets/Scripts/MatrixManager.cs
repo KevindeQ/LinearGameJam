@@ -5,9 +5,11 @@ public class MatrixManager : MonoBehaviour
 {
 	public Transform block;
     public Vector2 startTower;
+	public Vector2 drop;
+	public PlayerManager playerManager;
+	public DropManager dropManager;
 
-    public PlayerManager playerManager;
-
+	public static int difference = 1;
 	int[, ] matrix;
 
 	// Use this for initialization
@@ -15,14 +17,15 @@ public class MatrixManager : MonoBehaviour
 		matrix = new int[, ]
         {
 			{ 1, 2, 3, 4 },
-			{ 2, 3, 4, 5 },
-            { 3, 4, 5, 7 },
+			{ 2, 4, 4, 5 },
+            { 3, 4, 5, 8 },
         };
         
         int rows = matrix.GetLength(0);
         int columns = matrix.GetLength(1);
 
-        Vector3 startPosition = Vector3.zero;
+		Vector3 startPosition = Vector3.zero;
+		Vector3 dropPosition = Vector3.zero;
 
         for (int col = 0; col < columns; col++)
         {
@@ -43,13 +46,19 @@ public class MatrixManager : MonoBehaviour
                     if (row == startTower.x && col == startTower.y)
                     {
                         startPosition = blockInst.position;
-                    }
+					} 
+					if (row == drop.x && col == drop.y)
+					{
+						dropPosition = blockInst.position;
+					}
                 }
             }
 		}
 
         playerManager.transform.position = startPosition;
         playerManager.Location = startTower;
+
+		dropManager.transform.position = dropPosition;
 	}
 
 	public bool CanReach (Direction dir)
@@ -60,16 +69,16 @@ public class MatrixManager : MonoBehaviour
         switch (dir) {
             case Direction.North:
                 if (locationY - 1 == -1) return false;
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= difference;
             case Direction.South:
                 if (locationY + 1 == matrix.GetLength(0)) return false;
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= difference;
             case Direction.West:
                 if (locationX - 1 == -1) return false;
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= difference;
             case Direction.East:
                 if (locationX + 1 == matrix.GetLength(1)) return false;
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= difference;
             default:
                 return false;
         }
