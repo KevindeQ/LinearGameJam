@@ -5,20 +5,46 @@ public class MatrixManager : MonoBehaviour
 {
 	public Transform block;
 
-	int[, ] matrix;
+	private Matrix matrix;
 
-	// Use this for initialization
-	void Start () {
-		matrix = new int[, ]
+    private bool modified;
+    public bool IsModified
+    {
+        get { return modified; }
+        private set { modified = value; }
+    }
+
+    void Start()
+    {
+		matrix = new Matrix(new int[, ]
         {
 			{ 2, 2, 4, 3 },
 			{ 2, 2, 3, 1 },
             { 1, 1, 5, 3 },
-        };
-        
-        int rows = matrix.GetLength(0);
-        int columns = matrix.GetLength(1);
-        
+            { 1, 1, 5, 3 },
+        });
+
+        GenerateMatrixVisualization();
+        modified = false;
+    }
+
+	void Update()
+    {
+        if (!modified)
+            return;
+
+        for (int i = 0; i < transform.childCount; i++)
+            Destroy(transform.GetChild(i).gameObject);
+
+        GenerateMatrixVisualization();
+        modified = false;
+    }
+
+    void GenerateMatrixVisualization()
+    {
+        int rows = matrix.GetRowCount();
+        int columns = matrix.GetColumnCount();
+
         for (int x = 0; x < columns; x++)
         {
             for (int z = 0; z < rows; z++)
@@ -36,9 +62,14 @@ public class MatrixManager : MonoBehaviour
                     blockInst.localPosition = new Vector3(0, i, 0);
                 }
             }
-		}
-	}
+        }
+    }
 
-	// Update is called once per frame
-	void Update () {}
+    public void ModifyMatrix(Matrix NewMatrix)
+    {
+        matrix = NewMatrix;
+        modified = true;
+    }
+
+    public Matrix GetMatrix() { return matrix; }
 }
