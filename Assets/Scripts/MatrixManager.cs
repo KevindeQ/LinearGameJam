@@ -37,20 +37,25 @@ public class MatrixManager : MonoBehaviour
                     else
                         blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
 
-                    if (col == matrix.BananaLocation.x && row == matrix.BananaLocation.y)
+                    #region Banana
+                    if (col == matrix.BananaLocation.x && row == matrix.BananaLocation.y && i + 1 == matrix[row, col])
                     {
-                        if (banana != null){
-							banana.position = blockInst.position;
+                        if (banana != null) {
+                            Transform bananaInst = (Transform)Instantiate(banana, blockInst.position, Quaternion.identity);
+                            bananaInst.Translate(0, 1, 0);
 						}
                     }
+                    #endregion
 
-					if (col == matrix.EndLocation.x && row == matrix.EndLocation.y)
+                    #region End tower
+                    if (col == matrix.EndLocation.x && row == matrix.EndLocation.y)
 					{
 						if (endPortal != null) {
                             GameObject endTower = new GameObject();
                             endTower.name = "End Tower";
                             endTower.transform.position = tower.transform.position;
                             endTower.transform.Translate(0, 0, 1);
+                            endTower.transform.parent = transform;
 
                             for (int n = 0; n <= 2; n++) {
 								Transform endBlockInst = CreateEndBlock(string.Format("End block {0}", n + 1), endTower.transform, n);
@@ -65,6 +70,7 @@ public class MatrixManager : MonoBehaviour
 							}
 						}
 					}
+                    #endregion
                 }
             }
         }
