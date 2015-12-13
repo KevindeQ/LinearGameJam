@@ -111,12 +111,12 @@ public class BossController : MonoBehaviour
     IEnumerator GoToWinScreen(float duration)
     {
         yield return new WaitForSeconds(duration);
-        SceneManager.LoadScene("Main Menu Scene");
+        SceneManager.LoadScene("Menu Scene");
     }
 
     IEnumerator GoToLoseScreen()
     {
-        SceneManager.LoadScene("Main Menu Scene");
+        SceneManager.LoadScene("Menu Scene");
         yield return null;
     }
 
