@@ -4,8 +4,10 @@ using System.Collections;
 public class MatrixManager : MonoBehaviour
 {
 	public Transform block;
-    public Transform startBlock;
-    public Transform banana;
+	public Transform startBlock;
+	public Transform endBlock;
+	public Transform banana;
+	public Transform endPortal;
 
     public static int difference = 1;
 
@@ -37,13 +39,35 @@ public class MatrixManager : MonoBehaviour
 
                     if (col == matrix.BananaLocation.x && row == matrix.BananaLocation.y)
                     {
-                        if (banana != null)
-                        banana.position = blockInst.position;
+                        if (banana != null){
+							banana.position = blockInst.position;
+						}
                     }
+
+					if (col == matrix.EndLocation.x && row == matrix.EndLocation.y)
+					{
+						if (endPortal != null){
+							endPortal.position = blockInst.position;
+							endPortal.Translate(0,Random.Range(0,2),1);
+							for(int n = 0; n < endPortal.position.y+1; n++) {
+								CreateEndBlock("end block", endPortal.transform, n);
+								//CreateBlock(string.Format("Portal Block"), endPortal.transform, false);
+							}
+						}
+					}
                 }
             }
         }
     }
+
+	void CreateEndBlock(string name, Transform parentTower, int height)
+	{
+		Transform blockInst = (Transform)Instantiate(this.endBlock);
+
+		blockInst.name = name;
+		blockInst.parent = parentTower.transform;
+		blockInst.localPosition = new Vector3(0, (height-blockInst.parent.transform.position.y), 0);
+	}
 
     public void ModifyMatrix(Matrix NewMatrix)
     {
@@ -59,18 +83,22 @@ public class MatrixManager : MonoBehaviour
                     if (diff < 0)
                     {
                         IncreaseHeight(col, row);
-                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
-                        {
-                            banana.Translate(0, 1, 0);
-                        }
+						if (banana != null){
+	                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
+	                        {
+	                            banana.Translate(0, 1, 0);
+	                        }
+						}
                     }
                     else if (diff > 0)
                     {
                         DecreaseHeight(col, row);
-                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
-                        {
-                            banana.Translate(0, -1, 0);
-                        }
+						if (banana != null){
+	                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
+	                        {
+	                            banana.Translate(0, -1, 0);
+	                        }
+						}
                     }
                 }
             }

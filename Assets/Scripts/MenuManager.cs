@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour {
     public static Matrix puzzleMatrix;
 
-    Matrix level1matrix;
-    Matrix level2matrix;
-    Matrix level3matrix;
+	public static Matrix level1matrix;
+	public static Matrix level2matrix;
+	public static Matrix level3matrix;
 
     void Start ()
     {
         level1matrix = new Matrix(new int[,]
         {
-            { 1, 3 },
-            { 4, 1 }
+            { 1, 2 },
+            { 1, 1 }
         });
         level1matrix.StartLocation = new Vector2(1, 1);
-        level1matrix.BananaLocation = new Vector2(-1, -1);
+		level1matrix.BananaLocation = new Vector2(-1, -1);
+		level1matrix.EndLocation = new Vector2(0, 0);
 
         level2matrix = new Matrix(new int[,]
         {
@@ -25,7 +26,8 @@ public class MenuManager : MonoBehaviour {
             { 2, 1, 3 }
         });
         level2matrix.StartLocation = new Vector2(2, 2);
-        level2matrix.BananaLocation = new Vector2(-1, -1);
+		level2matrix.BananaLocation = new Vector2(-1, -1);
+		level2matrix.EndLocation = new Vector2(0, 0);
 
 
         level3matrix = new Matrix(new int[,]
@@ -36,7 +38,8 @@ public class MenuManager : MonoBehaviour {
             { 5, 1, 3, 2 }
         });
         level3matrix.StartLocation = new Vector2(3, 3);
-        level3matrix.BananaLocation = new Vector2(2, 3);
+		level3matrix.BananaLocation = new Vector2(2, 3);
+		level3matrix.EndLocation = new Vector2(0, 0);
     }
 
     public void ChangeLevel(string levelName)
@@ -54,7 +57,7 @@ public class MenuManager : MonoBehaviour {
                 break;
         }
 
-        SceneManager.LoadScene(levelName);
-		//Application.LoadLevel (levelName);
+        //SceneManager.LoadScene(levelName);
+		Application.LoadLevel (levelName);
     }
 }
