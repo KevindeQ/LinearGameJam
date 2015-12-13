@@ -8,8 +8,9 @@ public class BossController : MonoBehaviour
     public Material WeakpointMaterial;
 
     public int MaxHitCount;
-    List<Vector2> HitOrderList = new List<Vector2>();
-
+	public static List<Vector2> HitOrderList = new List<Vector2>();
+	public static List<Vector2> HitOrderPositionList = new List<Vector2>();
+	public static bool done = false;
     System.Random rnd = new System.Random();
 
 	void Start ()
@@ -33,11 +34,13 @@ public class BossController : MonoBehaviour
             int y = rnd.Next(0, 10);
             Vector2 vector = new Vector2(x, y);
 
-            if (!HitOrderList.Contains(vector) && GameObject.Find(Vector2Name(vector)) != null)
-                HitOrderList.Add(vector);
-
+			if (!HitOrderList.Contains (vector) && GameObject.Find (Vector2Name (vector)) != null) {
+				HitOrderList.Add (vector);
+				HitOrderPositionList.Add (GameObject.Find (Vector2Name (vector)).transform.localPosition);
+			}
             tries += 1;
         }
+		done = true;
     }
 
     void ModifyHitBoxes()
