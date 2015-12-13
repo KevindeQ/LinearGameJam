@@ -206,6 +206,9 @@ public class PlayerManager : MonoBehaviour
             matrixManager.IncreaseHeight(Location);
             transform.Translate(0, 1, 0);
 
+            AudioSource audioSource = minion.gameObject.GetComponentInChildren<AudioSource>();
+            audioSource.Play();
+
             UpdatePuzzleMatrix();
         }
 
@@ -213,6 +216,9 @@ public class PlayerManager : MonoBehaviour
         {
             if (matrixManager.DecreaseHeight(Location))
                 transform.Translate(0, -1, 0);
+
+            AudioSource audioSource = minion.gameObject.GetComponentInChildren<AudioSource>();
+            audioSource.Play();
 
             UpdatePuzzleMatrix();
         }
