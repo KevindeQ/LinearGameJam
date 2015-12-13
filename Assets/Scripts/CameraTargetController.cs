@@ -12,9 +12,11 @@ public class CameraTargetController : MonoBehaviour
 
     void LateUpdate()
     {
+
         GameObject target = targets[Selected];
 
-        transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.05f);
+		transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.05f);
+		transform.LookAt (GameObject.FindGameObjectWithTag ("Player").transform.position);
 
         int prevSelected = Selected;
         if (Selected == 0 || Selected == 2) return;
@@ -38,6 +40,8 @@ public class CameraTargetController : MonoBehaviour
         {
             HasChanged = true;
         }
+
+	
     }
 
     public int Selected { get; set; }
