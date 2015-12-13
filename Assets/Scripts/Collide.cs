@@ -24,9 +24,7 @@ public class Collide : MonoBehaviour {
 						break;
 					case 3:
 						MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                        SceneManager.LoadScene("L3");
-						break;
-					default:
+                        SceneManager.LoadScene("L4");
 						break;
 				}
 				break;
