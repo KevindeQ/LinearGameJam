@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class BossController : MonoBehaviour
@@ -8,20 +7,54 @@ public class BossController : MonoBehaviour
     public Material WeakpointMaterial;
 
     public int MaxHitCount;
+    int NextHitIndex;
     List<Vector2> HitOrderList = new List<Vector2>();
 
     System.Random rnd = new System.Random();
 
 	void Start ()
     {
+        NextHitIndex = 0;
+
         SelectHitOrder();
         ModifyHitBoxes();
 	}
 	
 	void Update ()
     {
-	    
 	}
+
+    void HitBox(Vector2 Coordinates)
+    {
+        if (Coordinates == HitOrderList[NextHitIndex])
+            NextHitIndex += 1;
+        else if (HitLosingBox(Coordinates))
+            PlayerLost();
+
+        if (NextHitIndex >= HitOrderList.Count)
+            PlayerWin();
+    }
+
+    bool HitLosingBox(Vector2 Coordinates)
+    {
+        for(int Index = 0; Index < HitOrderList.Count; ++Index)
+        {
+            if (Coordinates == HitOrderList[Index])
+                return true;
+        }
+
+        return false;
+    }
+
+    void PlayerWin()
+    {
+
+    }
+
+    void PlayerLost()
+    {
+
+    }
 
     void SelectHitOrder()
     {
