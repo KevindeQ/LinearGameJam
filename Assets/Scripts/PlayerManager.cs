@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using Menu.Managers;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
     public Vector2 startPosition;
 
     MatrixManager matrixManager;
@@ -11,21 +12,24 @@ public class PlayerManager : MonoBehaviour {
     public MatrixManager puzzleMatrixManager;
     public MatrixManager preMultiplyMatrixManager;
     public MatrixManager postMultiplyMatrixManager;
+    public CameraTargetController ctc;
 
-    CameraTargetController ctc;
+    private int lastSelected;
 
-    void Start ()
+    void Start()
     {
-        ctc = Camera.main.GetComponent<CameraTargetController>();
+        lastSelected = ctc.selected;
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         #region Teleport
-        if (ctc.HasChanged)
+        if (lastSelected != ctc.selected)
         {
-            ctc.HasChanged = false;
-            if (ctc.Selected != 1)
+            lastSelected = ctc.selected;
+
+            if (ctc.selected != 1)
             {
                 puzzleLocation = Location;
                 puzzlePosition = transform.localPosition;
@@ -34,7 +38,7 @@ public class PlayerManager : MonoBehaviour {
             }
 
             int diff = 0;
-            switch (ctc.Selected)
+            switch (ctc.selected)
             {
                 case 0:
                     matrixManager = preMultiplyMatrixManager;
@@ -66,25 +70,27 @@ public class PlayerManager : MonoBehaviour {
         #region Movement
         if (Input.GetKeyDown(KeyCode.W))
         {
-            if (matrixManager.IsInBound(Location, Direction.North) && (matrixManager.CanReach(Location, Direction.North) || ctc.Selected != 1))
+            if (matrixManager.IsInBound(Location, Direction.North) && (matrixManager.CanReach(Location, Direction.North) || ctc.selected != 1))
             {
                 Location = new Vector2(Location.x, Location.y - 1);
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
                 transform.Translate(0, diff - 1, 1);
             }
-			//Only for the end position, defined at x = 0 and y = 0,
-			else if(ctc.Selected == 1) {
-				if (Location.y == 0 && Location.x == 0) {
-					var diff = Mathf.Abs(matrixManager.endPortal.position.y+1 - matrixManager.GetHeight(Location));
-					if (diff <= MatrixManager.difference)
-						transform.Translate(0, diff , 1);
-				}
-			}
+            //Only for the end position, defined at x = 0 and y = 0,
+            else if (ctc.selected == 1)
+            {
+                if (Location.y == 0 && Location.x == 0)
+                {
+                    var diff = Mathf.Abs(matrixManager.endPortal.position.y + 1 - matrixManager.GetHeight(Location));
+                    if (diff <= MatrixManager.difference)
+                        transform.Translate(0, diff, 1);
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            if (matrixManager.IsInBound(Location, Direction.South) && (matrixManager.CanReach(Location, Direction.South) || ctc.Selected != 1))
+            if (matrixManager.IsInBound(Location, Direction.South) && (matrixManager.CanReach(Location, Direction.South) || ctc.selected != 1))
             {
                 Location = new Vector2(Location.x, Location.y + 1);
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
@@ -94,7 +100,7 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (matrixManager.IsInBound(Location, Direction.West) && (matrixManager.CanReach(Location, Direction.West) || ctc.Selected != 1))
+            if (matrixManager.IsInBound(Location, Direction.West) && (matrixManager.CanReach(Location, Direction.West) || ctc.selected != 1))
             {
                 Location = new Vector2(Location.x - 1, Location.y);
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
@@ -104,7 +110,7 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            if (matrixManager.IsInBound(Location, Direction.East) && (matrixManager.CanReach(Location, Direction.East) || ctc.Selected != 1))
+            if (matrixManager.IsInBound(Location, Direction.East) && (matrixManager.CanReach(Location, Direction.East) || ctc.selected != 1))
             {
                 Location = new Vector2(Location.x + 1, Location.y);
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
@@ -113,7 +119,7 @@ public class PlayerManager : MonoBehaviour {
         }
         #endregion
 
-        if (Input.GetKeyDown(KeyCode.Q) && ctc.Selected != 1)
+        if (Input.GetKeyDown(KeyCode.Q) && ctc.selected != 1)
         {
             matrixManager.IncreaseHeight(Location);
             transform.Translate(0, 1, 0);
@@ -121,7 +127,7 @@ public class PlayerManager : MonoBehaviour {
             FakeApplyMatrix();
         }
 
-        if (Input.GetKeyDown(KeyCode.Z) && ctc.Selected != 1)
+        if (Input.GetKeyDown(KeyCode.Z) && ctc.selected != 1)
         {
             if (matrixManager.DecreaseHeight(Location))
                 transform.Translate(0, -1, 0);
@@ -129,7 +135,7 @@ public class PlayerManager : MonoBehaviour {
             FakeApplyMatrix();
         }
 
-        if(ctc.Selected != 1 && Input.GetKeyDown(KeyCode.Return))
+        if (ctc.selected != 1 && Input.GetKeyDown(KeyCode.Return))
         {
             int rows = preMultiplyMatrixManager.GetMatrix().GetRowCount();
             int cols = preMultiplyMatrixManager.GetMatrix().GetColumnCount();
@@ -144,10 +150,10 @@ public class PlayerManager : MonoBehaviour {
             var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
             transform.Translate(0, diff - 1, 0);
 
-            ctc.Selected = 1;
+            ctc.selected = 1;
         }
 
-        if(ctc.Selected != 1 && Input.GetKeyDown(KeyCode.Escape))
+        if (ctc.selected != 1 && Input.GetKeyDown(KeyCode.Escape))
         {
             int rows = preMultiplyMatrixManager.GetMatrix().GetRowCount();
             int cols = preMultiplyMatrixManager.GetMatrix().GetColumnCount();
@@ -161,7 +167,7 @@ public class PlayerManager : MonoBehaviour {
             Location = puzzleLocation;
             transform.localPosition = puzzlePosition;
 
-            ctc.Selected = 1;
+            ctc.selected = 1;
         }
     }
 
@@ -174,7 +180,7 @@ public class PlayerManager : MonoBehaviour {
         puzzleMatrixManager.ModifyMatrix(NewMatrix);
     }
 
-    public void Init ()
+    public void Init()
     {
         matrixManager = puzzleMatrixManager;
         Location = MenuManager.puzzleMatrix.StartLocation;
@@ -182,5 +188,5 @@ public class PlayerManager : MonoBehaviour {
         transform.localPosition = matrixManager.GetStartPosition();
     }
 
-    public Vector2 Location { get; set;  }
+    public Vector2 Location { get; set; }
 }
