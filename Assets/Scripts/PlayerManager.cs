@@ -67,6 +67,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
         #endregion
+
         #region Movement
         if (Input.GetKeyDown(KeyCode.W))
         {

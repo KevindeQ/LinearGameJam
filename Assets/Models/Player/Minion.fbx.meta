@@ -1,0 +1,1048 @@
+fileFormatVersion: 2
+guid: f74dec076a9132d43807cba1b3b5f50c
+timeCreated: 1450026734
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Biped_rig
+    100002: Body
+    100004: Character
+    100006: Chest_IK_con_
+    100008: elastic_1
+    100010: Eye
+    100012: eye_drilled
+    100014: Hair
+    100016: Head_00_jnt
+    100018: Head_01_jnt
+    100020: Head_null
+    100022: HN_Minion
+    100024: HN_Mouth
+    100026: HN_Tongue
+    100028: HN_Visor
+    100030: Home
+    100032: Joint_Eye
+    100034: L_Arm_IK_con_
+    100036: L_Arm_IK_pole
+    100038: L_Finger_Base_jnt
+    100040: L_Finger_Base_jnt_1
+    100042: L_Finger_End_jnt
+    100044: L_Finger_End_jnt_1
+    100046: L_Finger_Middle_jnt
+    100048: L_Finger_Middle_jnt_1
+    100050: L_Finger_null
+    100052: L_Finger_null_1
+    100054: L_Finger_Tip_jnt
+    100056: L_Finger_Tip_jnt_1
+    100058: L_Finger_Top_jnt
+    100060: L_Finger_Top_jnt_1
+    100062: L_Foot_jnt
+    100064: L_Foot_jnt_Goal
+    100066: L_Foot_UpV
+    100068: L_Hand_goal
+    100070: L_Hand_null
+    100072: L_Heel_Rot
+    100074: L_Hip_jnt
+    100076: L_Hip_jnt_Pole
+    100078: L_IK_Arm_null
+    100080: L_IK_Collar_jnt
+    100082: L_IK_Collar_upv
+    100084: L_IK_Elbow_jnt
+    100086: L_IK_Hand_jnt
+    100088: L_IK_Shoulder_jnt
+    100090: L_Knee_jnt
+    100092: L_Leg_Foot_con_
+    100094: L_Leg_null
+    100096: L_Leg_pole
+    100098: L_Shoulder_goal
+    100100: L_Shoulder_IK_con_
+    100102: L_Thumb_Base_jnt
+    100104: L_Thumb_End_jnt
+    100106: L_Thumb_Middle_jnt
+    100108: L_Thumb_null
+    100110: L_Thumb_Top_jnt
+    100112: L_Toe_End_jnt
+    100114: L_Toe_End_jnt_Goal
+    100116: L_Toe_jnt
+    100118: L_Toe_jnt_Goal
+    100120: L_Toe_Rot
+    100122: L_Toe_UpV
+    100124: L_Toe_wiggle
+    100126: lens
+    100128: Mask_VR
+    100130: Master_con_
+    100132: //RootNode
+    100134: Minion_Body
+    100136: Mouth
+    100138: Mouth_1
+    100140: Mouth_base
+    100142: Mouth_controller
+    100144: mouth_jaw_00
+    100146: mouth_jaw_01
+    100148: Neck_FK_02_jnt
+    100150: Overalls
+    100152: R_Arm_IK_con_
+    100154: R_Arm_IK_pole
+    100156: R_Finger_Base_jnt
+    100158: R_Finger_Base_jnt_1
+    100160: R_Finger_End_jnt
+    100162: R_Finger_End_jnt_1
+    100164: R_Finger_Middle_jnt
+    100166: R_Finger_Middle_jnt_1
+    100168: R_Finger_null
+    100170: R_Finger_null_1
+    100172: R_Finger_Tip_jnt
+    100174: R_Finger_Tip_jnt_1
+    100176: R_Finger_Top_jnt
+    100178: R_Finger_Top_jnt_1
+    100180: R_Foot_jnt
+    100182: R_Foot_jnt_Goal
+    100184: R_Foot_UpV
+    100186: R_Hand_goal
+    100188: R_Hand_null
+    100190: R_Heel_Rot
+    100192: R_Hip_jnt
+    100194: R_Hip_jnt_Pole
+    100196: R_IK_Arm_null
+    100198: R_IK_Collar_jnt
+    100200: R_IK_Collar_upv
+    100202: R_IK_Elbow_jnt
+    100204: R_IK_Hand_jnt
+    100206: R_IK_Shoulder_jnt
+    100208: R_Knee_jnt
+    100210: R_Leg_Foot_con_
+    100212: R_Leg_null
+    100214: R_Leg_pole
+    100216: R_Shoulder_goal
+    100218: R_Shoulder_IK_con_
+    100220: R_Thumb_Base_jnt
+    100222: R_Thumb_End_jnt
+    100224: R_Thumb_Middle_jnt
+    100226: R_Thumb_null
+    100228: R_Thumb_Top_jnt
+    100230: R_Toe_End_jnt
+    100232: R_Toe_End_jnt_Goal
+    100234: R_Toe_jnt
+    100236: R_Toe_jnt_Goal
+    100238: R_Toe_Rot
+    100240: R_Toe_UpV
+    100242: R_Toe_wiggle
+    100244: Root_null_jnt
+    100246: Salopette_1
+    100248: salopette_1
+    100250: salopette_1_2
+    100252: Smussatura
+    100254: Smussatura_1
+    100256: Spine_IK_00_jnt
+    100258: Spine_IK_01_jnt
+    100260: Spine_IK_02_jnt
+    100262: Spine_IK_02_jnt_2
+    100264: Spine_IK_03_jnt
+    100266: Spine_IK_04_jnt
+    100268: Spine_IK_null
+    100270: Spinetip_FK_03_jnt
+    100272: Structure
+    100274: Testo
+    100276: Tongue
+    100278: Tongue_2
+    100280: Torso_con_
+    100282: Body_2
+    100284: Body_MeshPart0
+    100286: Body_MeshPart1
+    100288: elastic_1_MeshPart0
+    100290: elastic_1_MeshPart1
+    100292: elastic_1_MeshPart2
+    100294: elastic_1_MeshPart3
+    100296: elastic_1_MeshPart4
+    100298: elastic_1_MeshPart5
+    100300: Mouth_1_MeshPart0
+    100302: Mouth_1_MeshPart1
+    100304: "Arma\xE7\xE3o_do_\xD3culos"
+    100306: "Arma\xE7\xE3o_do_\xD3culos_2"
+    100308: Boca
+    100310: Controle_dos_Olhos
+    100312: Dente
+    100314: Dente_10
+    100316: Dente_11
+    100318: Dente_12
+    100320: Dente_13
+    100322: Dente_14
+    100324: Dente_15
+    100326: Dente_16
+    100328: Dente_17
+    100330: Dente_18
+    100332: Dente_19
+    100334: Dente_2
+    100336: Dente_20
+    100338: Dente_21
+    100340: Dente_22
+    100342: Dente_23
+    100344: Dente_24
+    100346: Dente_3
+    100348: Dente_4
+    100350: Dente_5
+    100352: Dente_6
+    100354: Dente_7
+    100356: Dente_8
+    100358: Dente_9
+    100360: "Detalhe_do_\xD3culos"
+    100362: "Detalhe_do_\xD3culos_2"
+    100364: Eyes
+    100366: Fio2
+    100368: Fio2_2
+    100370: Fio2_3
+    100372: Fio3
+    100374: Fio3_2
+    100376: Fio3_3
+    100378: Fita
+    100380: Foi
+    100382: Foi1
+    100384: Foi1_2
+    100386: Foi1_3
+    100388: Foi4
+    100390: Foi4_2
+    100392: Foi4_3
+    100394: Foi_2
+    100396: Foi_3
+    100398: Gingiva
+    100400: Gingiva_2
+    100402: Gingiva_3
+    100404: Gingiva_4
+    100406: Gingiva_5
+    100408: Gingiva_6
+    100410: Hair_1
+    100412: Hair_2
+    100414: Hair_3
+    100416: Head
+    100418: Hip
+    100420: L_Elbow
+    100422: L_Foot
+    100424: L_Glove
+    100426: L_Hand
+    100428: L_Knee
+    100430: L_Leg
+    100432: L_Shoe
+    100434: L_Shoulder
+    100436: L_Toe
+    100438: Lower_Teeth
+    100440: Luva_Direita
+    100442: Luva_Esquerda
+    100444: Minion_2_Olhos
+    100446: Olho_Direito
+    100448: Olho_Esquerdo
+    100450: Overall_1
+    100452: Palpebra_Direita_Baixo
+    100454: Palpebra_Direita_Cima
+    100456: Palpebra_Esquerda_Baixo
+    100458: Palpebra_Esquerda_Cima
+    100460: Palpebras
+    100462: R_Elbow
+    100464: R_Foot
+    100466: R_Glove
+    100468: R_Hand
+    100470: R_Knee
+    100472: R_Leg
+    100474: R_Shoe
+    100476: R_Shoulder
+    100478: R_Toe
+    100480: Root
+    100482: Sapato
+    100484: Sapato_2
+    100486: Spine_1
+    100488: Upper_Teeth
+    100490: Overall_1_MeshPart0
+    100492: Overall_1_MeshPart1
+    100494: Overall_1_MeshPart10
+    100496: Overall_1_MeshPart11
+    100498: Overall_1_MeshPart12
+    100500: Overall_1_MeshPart13
+    100502: Overall_1_MeshPart14
+    100504: Overall_1_MeshPart15
+    100506: Overall_1_MeshPart16
+    100508: Overall_1_MeshPart17
+    100510: Overall_1_MeshPart18
+    100512: Overall_1_MeshPart19
+    100514: Overall_1_MeshPart2
+    100516: Overall_1_MeshPart20
+    100518: Overall_1_MeshPart3
+    100520: Overall_1_MeshPart4
+    100522: Overall_1_MeshPart5
+    100524: Overall_1_MeshPart6
+    100526: Overall_1_MeshPart7
+    100528: Overall_1_MeshPart8
+    100530: Overall_1_MeshPart9
+    400000: Biped_rig
+    400002: Body
+    400004: Character
+    400006: Chest_IK_con_
+    400008: elastic_1
+    400010: Eye
+    400012: eye_drilled
+    400014: Hair
+    400016: Head_00_jnt
+    400018: Head_01_jnt
+    400020: Head_null
+    400022: HN_Minion
+    400024: HN_Mouth
+    400026: HN_Tongue
+    400028: HN_Visor
+    400030: Home
+    400032: Joint_Eye
+    400034: L_Arm_IK_con_
+    400036: L_Arm_IK_pole
+    400038: L_Finger_Base_jnt
+    400040: L_Finger_Base_jnt_1
+    400042: L_Finger_End_jnt
+    400044: L_Finger_End_jnt_1
+    400046: L_Finger_Middle_jnt
+    400048: L_Finger_Middle_jnt_1
+    400050: L_Finger_null
+    400052: L_Finger_null_1
+    400054: L_Finger_Tip_jnt
+    400056: L_Finger_Tip_jnt_1
+    400058: L_Finger_Top_jnt
+    400060: L_Finger_Top_jnt_1
+    400062: L_Foot_jnt
+    400064: L_Foot_jnt_Goal
+    400066: L_Foot_UpV
+    400068: L_Hand_goal
+    400070: L_Hand_null
+    400072: L_Heel_Rot
+    400074: L_Hip_jnt
+    400076: L_Hip_jnt_Pole
+    400078: L_IK_Arm_null
+    400080: L_IK_Collar_jnt
+    400082: L_IK_Collar_upv
+    400084: L_IK_Elbow_jnt
+    400086: L_IK_Hand_jnt
+    400088: L_IK_Shoulder_jnt
+    400090: L_Knee_jnt
+    400092: L_Leg_Foot_con_
+    400094: L_Leg_null
+    400096: L_Leg_pole
+    400098: L_Shoulder_goal
+    400100: L_Shoulder_IK_con_
+    400102: L_Thumb_Base_jnt
+    400104: L_Thumb_End_jnt
+    400106: L_Thumb_Middle_jnt
+    400108: L_Thumb_null
+    400110: L_Thumb_Top_jnt
+    400112: L_Toe_End_jnt
+    400114: L_Toe_End_jnt_Goal
+    400116: L_Toe_jnt
+    400118: L_Toe_jnt_Goal
+    400120: L_Toe_Rot
+    400122: L_Toe_UpV
+    400124: L_Toe_wiggle
+    400126: lens
+    400128: Mask_VR
+    400130: Master_con_
+    400132: //RootNode
+    400134: Minion_Body
+    400136: Mouth
+    400138: Mouth_1
+    400140: Mouth_base
+    400142: Mouth_controller
+    400144: mouth_jaw_00
+    400146: mouth_jaw_01
+    400148: Neck_FK_02_jnt
+    400150: Overalls
+    400152: R_Arm_IK_con_
+    400154: R_Arm_IK_pole
+    400156: R_Finger_Base_jnt
+    400158: R_Finger_Base_jnt_1
+    400160: R_Finger_End_jnt
+    400162: R_Finger_End_jnt_1
+    400164: R_Finger_Middle_jnt
+    400166: R_Finger_Middle_jnt_1
+    400168: R_Finger_null
+    400170: R_Finger_null_1
+    400172: R_Finger_Tip_jnt
+    400174: R_Finger_Tip_jnt_1
+    400176: R_Finger_Top_jnt
+    400178: R_Finger_Top_jnt_1
+    400180: R_Foot_jnt
+    400182: R_Foot_jnt_Goal
+    400184: R_Foot_UpV
+    400186: R_Hand_goal
+    400188: R_Hand_null
+    400190: R_Heel_Rot
+    400192: R_Hip_jnt
+    400194: R_Hip_jnt_Pole
+    400196: R_IK_Arm_null
+    400198: R_IK_Collar_jnt
+    400200: R_IK_Collar_upv
+    400202: R_IK_Elbow_jnt
+    400204: R_IK_Hand_jnt
+    400206: R_IK_Shoulder_jnt
+    400208: R_Knee_jnt
+    400210: R_Leg_Foot_con_
+    400212: R_Leg_null
+    400214: R_Leg_pole
+    400216: R_Shoulder_goal
+    400218: R_Shoulder_IK_con_
+    400220: R_Thumb_Base_jnt
+    400222: R_Thumb_End_jnt
+    400224: R_Thumb_Middle_jnt
+    400226: R_Thumb_null
+    400228: R_Thumb_Top_jnt
+    400230: R_Toe_End_jnt
+    400232: R_Toe_End_jnt_Goal
+    400234: R_Toe_jnt
+    400236: R_Toe_jnt_Goal
+    400238: R_Toe_Rot
+    400240: R_Toe_UpV
+    400242: R_Toe_wiggle
+    400244: Root_null_jnt
+    400246: Salopette_1
+    400248: salopette_1
+    400250: salopette_1_2
+    400252: Smussatura
+    400254: Smussatura_1
+    400256: Spine_IK_00_jnt
+    400258: Spine_IK_01_jnt
+    400260: Spine_IK_02_jnt
+    400262: Spine_IK_02_jnt_2
+    400264: Spine_IK_03_jnt
+    400266: Spine_IK_04_jnt
+    400268: Spine_IK_null
+    400270: Spinetip_FK_03_jnt
+    400272: Structure
+    400274: Testo
+    400276: Tongue
+    400278: Tongue_2
+    400280: Torso_con_
+    400282: Body_2
+    400284: Body_MeshPart0
+    400286: Body_MeshPart1
+    400288: elastic_1_MeshPart0
+    400290: elastic_1_MeshPart1
+    400292: elastic_1_MeshPart2
+    400294: elastic_1_MeshPart3
+    400296: elastic_1_MeshPart4
+    400298: elastic_1_MeshPart5
+    400300: Mouth_1_MeshPart0
+    400302: Mouth_1_MeshPart1
+    400304: "Arma\xE7\xE3o_do_\xD3culos"
+    400306: "Arma\xE7\xE3o_do_\xD3culos_2"
+    400308: Boca
+    400310: Controle_dos_Olhos
+    400312: Dente
+    400314: Dente_10
+    400316: Dente_11
+    400318: Dente_12
+    400320: Dente_13
+    400322: Dente_14
+    400324: Dente_15
+    400326: Dente_16
+    400328: Dente_17
+    400330: Dente_18
+    400332: Dente_19
+    400334: Dente_2
+    400336: Dente_20
+    400338: Dente_21
+    400340: Dente_22
+    400342: Dente_23
+    400344: Dente_24
+    400346: Dente_3
+    400348: Dente_4
+    400350: Dente_5
+    400352: Dente_6
+    400354: Dente_7
+    400356: Dente_8
+    400358: Dente_9
+    400360: "Detalhe_do_\xD3culos"
+    400362: "Detalhe_do_\xD3culos_2"
+    400364: Eyes
+    400366: Fio2
+    400368: Fio2_2
+    400370: Fio2_3
+    400372: Fio3
+    400374: Fio3_2
+    400376: Fio3_3
+    400378: Fita
+    400380: Foi
+    400382: Foi1
+    400384: Foi1_2
+    400386: Foi1_3
+    400388: Foi4
+    400390: Foi4_2
+    400392: Foi4_3
+    400394: Foi_2
+    400396: Foi_3
+    400398: Gingiva
+    400400: Gingiva_2
+    400402: Gingiva_3
+    400404: Gingiva_4
+    400406: Gingiva_5
+    400408: Gingiva_6
+    400410: Hair_1
+    400412: Hair_2
+    400414: Hair_3
+    400416: Head
+    400418: Hip
+    400420: L_Elbow
+    400422: L_Foot
+    400424: L_Glove
+    400426: L_Hand
+    400428: L_Knee
+    400430: L_Leg
+    400432: L_Shoe
+    400434: L_Shoulder
+    400436: L_Toe
+    400438: Lower_Teeth
+    400440: Luva_Direita
+    400442: Luva_Esquerda
+    400444: Minion_2_Olhos
+    400446: Olho_Direito
+    400448: Olho_Esquerdo
+    400450: Overall_1
+    400452: Palpebra_Direita_Baixo
+    400454: Palpebra_Direita_Cima
+    400456: Palpebra_Esquerda_Baixo
+    400458: Palpebra_Esquerda_Cima
+    400460: Palpebras
+    400462: R_Elbow
+    400464: R_Foot
+    400466: R_Glove
+    400468: R_Hand
+    400470: R_Knee
+    400472: R_Leg
+    400474: R_Shoe
+    400476: R_Shoulder
+    400478: R_Toe
+    400480: Root
+    400482: Sapato
+    400484: Sapato_2
+    400486: Spine_1
+    400488: Upper_Teeth
+    400490: Overall_1_MeshPart0
+    400492: Overall_1_MeshPart1
+    400494: Overall_1_MeshPart10
+    400496: Overall_1_MeshPart11
+    400498: Overall_1_MeshPart12
+    400500: Overall_1_MeshPart13
+    400502: Overall_1_MeshPart14
+    400504: Overall_1_MeshPart15
+    400506: Overall_1_MeshPart16
+    400508: Overall_1_MeshPart17
+    400510: Overall_1_MeshPart18
+    400512: Overall_1_MeshPart19
+    400514: Overall_1_MeshPart2
+    400516: Overall_1_MeshPart20
+    400518: Overall_1_MeshPart3
+    400520: Overall_1_MeshPart4
+    400522: Overall_1_MeshPart5
+    400524: Overall_1_MeshPart6
+    400526: Overall_1_MeshPart7
+    400528: Overall_1_MeshPart8
+    400530: Overall_1_MeshPart9
+    2300000: elastic_1
+    2300002: lens
+    2300004: elastic_1_MeshPart0
+    2300006: elastic_1_MeshPart1
+    2300008: elastic_1_MeshPart2
+    2300010: elastic_1_MeshPart3
+    2300012: elastic_1_MeshPart4
+    2300014: elastic_1_MeshPart5
+    2300016: "Arma\xE7\xE3o_do_\xD3culos"
+    2300018: "Arma\xE7\xE3o_do_\xD3culos_2"
+    2300020: Boca
+    2300022: Dente_10
+    2300024: Dente_12
+    2300026: Dente_14
+    2300028: Dente_16
+    2300030: Dente_18
+    2300032: Dente_2
+    2300034: Dente_20
+    2300036: Dente_22
+    2300038: Dente_24
+    2300040: Dente_4
+    2300042: Dente_6
+    2300044: Dente_8
+    2300046: "Detalhe_do_\xD3culos"
+    2300048: "Detalhe_do_\xD3culos_2"
+    2300050: Fio2
+    2300052: Fio2_2
+    2300054: Fio2_3
+    2300056: Fio3
+    2300058: Fio3_2
+    2300060: Fio3_3
+    2300062: Fita
+    2300064: Foi
+    2300066: Foi1
+    2300068: Foi1_2
+    2300070: Foi1_3
+    2300072: Foi4
+    2300074: Foi4_2
+    2300076: Foi4_3
+    2300078: Foi_2
+    2300080: Foi_3
+    2300082: Gingiva_3
+    2300084: Gingiva_6
+    2300086: Luva_Direita
+    2300088: Luva_Esquerda
+    2300090: Olho_Direito
+    2300092: Olho_Esquerdo
+    2300094: Palpebra_Direita_Baixo
+    2300096: Palpebra_Direita_Cima
+    2300098: Palpebra_Esquerda_Baixo
+    2300100: Palpebra_Esquerda_Cima
+    2300102: Sapato
+    2300104: Sapato_2
+    3300000: elastic_1
+    3300002: lens
+    3300004: elastic_1_MeshPart0
+    3300006: elastic_1_MeshPart1
+    3300008: elastic_1_MeshPart2
+    3300010: elastic_1_MeshPart3
+    3300012: elastic_1_MeshPart4
+    3300014: elastic_1_MeshPart5
+    3300016: "Arma\xE7\xE3o_do_\xD3culos"
+    3300018: "Arma\xE7\xE3o_do_\xD3culos_2"
+    3300020: Boca
+    3300022: Dente_10
+    3300024: Dente_12
+    3300026: Dente_14
+    3300028: Dente_16
+    3300030: Dente_18
+    3300032: Dente_2
+    3300034: Dente_20
+    3300036: Dente_22
+    3300038: Dente_24
+    3300040: Dente_4
+    3300042: Dente_6
+    3300044: Dente_8
+    3300046: "Detalhe_do_\xD3culos"
+    3300048: "Detalhe_do_\xD3culos_2"
+    3300050: Fio2
+    3300052: Fio2_2
+    3300054: Fio2_3
+    3300056: Fio3
+    3300058: Fio3_2
+    3300060: Fio3_3
+    3300062: Fita
+    3300064: Foi
+    3300066: Foi1
+    3300068: Foi1_2
+    3300070: Foi1_3
+    3300072: Foi4
+    3300074: Foi4_2
+    3300076: Foi4_3
+    3300078: Foi_2
+    3300080: Foi_3
+    3300082: Gingiva_3
+    3300084: Gingiva_6
+    3300086: Luva_Direita
+    3300088: Luva_Esquerda
+    3300090: Olho_Direito
+    3300092: Olho_Esquerdo
+    3300094: Palpebra_Direita_Baixo
+    3300096: Palpebra_Direita_Cima
+    3300098: Palpebra_Esquerda_Baixo
+    3300100: Palpebra_Esquerda_Cima
+    3300102: Sapato
+    3300104: Sapato_2
+    4300000: Mouth_1
+    4300002: Tongue_2
+    4300004: Body
+    4300006: eye_drilled
+    4300008: salopette_1_2
+    4300010: elastic_1
+    4300012: lens
+    4300014: Mouth_1_MeshPart0
+    4300016: Mouth_1_MeshPart1
+    4300018: Body_MeshPart0
+    4300020: Body_MeshPart1
+    4300022: elastic_1_MeshPart0
+    4300024: elastic_1_MeshPart1
+    4300026: elastic_1_MeshPart2
+    4300028: elastic_1_MeshPart3
+    4300030: elastic_1_MeshPart4
+    4300032: elastic_1_MeshPart5
+    4300034: Foi
+    4300036: Foi1
+    4300038: Fio2
+    4300040: Fio3
+    4300042: Foi4
+    4300044: Foi_2
+    4300046: Foi1_2
+    4300048: Fio2_2
+    4300050: Fio3_2
+    4300052: Foi4_2
+    4300054: Foi_3
+    4300056: Foi1_3
+    4300058: Fio2_3
+    4300060: Fio3_3
+    4300062: Foi4_3
+    4300064: Fita
+    4300066: "Detalhe_do_\xD3culos"
+    4300068: "Detalhe_do_\xD3culos_2"
+    4300070: "Arma\xE7\xE3o_do_\xD3culos"
+    4300072: "Arma\xE7\xE3o_do_\xD3culos_2"
+    4300074: Palpebra_Direita_Cima
+    4300076: Palpebra_Esquerda_Cima
+    4300078: Palpebra_Direita_Baixo
+    4300080: Palpebra_Esquerda_Baixo
+    4300082: Olho_Esquerdo
+    4300084: Olho_Direito
+    4300086: Boca
+    4300088: Dente_2
+    4300090: Dente_4
+    4300092: Dente_6
+    4300094: Dente_8
+    4300096: Dente_10
+    4300098: Dente_12
+    4300100: Gingiva_3
+    4300102: Dente_14
+    4300104: Dente_16
+    4300106: Dente_18
+    4300108: Dente_20
+    4300110: Dente_22
+    4300112: Dente_24
+    4300114: Gingiva_6
+    4300116: Luva_Esquerda
+    4300118: Luva_Direita
+    4300120: Sapato
+    4300122: Sapato_2
+    4300124: Overall_1
+    4300126: Overall_1_MeshPart0
+    4300128: Overall_1_MeshPart1
+    4300130: Overall_1_MeshPart2
+    4300132: Overall_1_MeshPart3
+    4300134: Overall_1_MeshPart4
+    4300136: Overall_1_MeshPart5
+    4300138: Overall_1_MeshPart6
+    4300140: Overall_1_MeshPart7
+    4300142: Overall_1_MeshPart8
+    4300144: Overall_1_MeshPart9
+    4300146: Overall_1_MeshPart10
+    4300148: Overall_1_MeshPart11
+    4300150: Overall_1_MeshPart12
+    4300152: Overall_1_MeshPart13
+    4300154: Overall_1_MeshPart14
+    4300156: Overall_1_MeshPart15
+    4300158: Overall_1_MeshPart16
+    4300160: Overall_1_MeshPart17
+    4300162: Overall_1_MeshPart18
+    4300164: Overall_1_MeshPart19
+    4300166: Overall_1_MeshPart20
+    7400000: Idle
+    9500000: //RootNode
+    13700000: Body
+    13700002: eye_drilled
+    13700004: Mouth_1
+    13700006: salopette_1_2
+    13700008: Tongue_2
+    13700010: Body_MeshPart0
+    13700012: Body_MeshPart1
+    13700014: Mouth_1_MeshPart0
+    13700016: Mouth_1_MeshPart1
+    13700018: Overall_1
+    13700020: Overall_1_MeshPart0
+    13700022: Overall_1_MeshPart1
+    13700024: Overall_1_MeshPart10
+    13700026: Overall_1_MeshPart11
+    13700028: Overall_1_MeshPart12
+    13700030: Overall_1_MeshPart13
+    13700032: Overall_1_MeshPart14
+    13700034: Overall_1_MeshPart15
+    13700036: Overall_1_MeshPart16
+    13700038: Overall_1_MeshPart17
+    13700040: Overall_1_MeshPart18
+    13700042: Overall_1_MeshPart19
+    13700044: Overall_1_MeshPart2
+    13700046: Overall_1_MeshPart20
+    13700048: Overall_1_MeshPart3
+    13700050: Overall_1_MeshPart4
+    13700052: Overall_1_MeshPart5
+    13700054: Overall_1_MeshPart6
+    13700056: Overall_1_MeshPart7
+    13700058: Overall_1_MeshPart8
+    13700060: Overall_1_MeshPart9
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Main
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Minion_2_Olhos
+        weight: 1
+      - path: Minion_2_Olhos/Body
+        weight: 1
+      - path: Minion_2_Olhos/Body/Overall_1
+        weight: 1
+      - path: Minion_2_Olhos/Body/Overall_1/Overall_1_MeshPart0
+        weight: 1
+      - path: Minion_2_Olhos/Body/Overall_1/Overall_1_MeshPart1
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Hip
+        weight: 1
+      - path: Root/Hip/L_Leg
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot/L_Shoe
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot/L_Shoe/Sapato
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Root/Hip/R_Leg
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot/R_Shoe
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot/R_Shoe/Sapato_2
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Root/Hip/Spine_1
+        weight: 1
+      - path: Root/Hip/Spine_1/Head
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Boca
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Arma\xE7\xE3o_do_\xD3culos"
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Arma\xE7\xE3o_do_\xD3culos_2"
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Controle_dos_Olhos
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Detalhe_do_\xD3culos"
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Detalhe_do_\xD3culos_2"
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Fita
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Olho_Direito
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Olho_Esquerdo
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Direita_Baixo
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Direita_Cima
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Esquerda_Baixo
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Esquerda_Cima
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Fio2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Fio3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Foi
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Foi1
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Foi4
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Fio2_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Fio3_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Foi1_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Foi4_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Foi_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Fio2_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Fio3_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Foi1_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Foi4_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Foi_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_13
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_13/Dente_14
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_15
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_15/Dente_16
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_17
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_17/Dente_18
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_19
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_19/Dente_20
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_21
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_21/Dente_22
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_23
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_23/Dente_24
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Gingiva_4
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Gingiva_4/Gingiva_5
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Gingiva_4/Gingiva_5/Gingiva_6
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente/Dente_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_3/Dente_4
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_5
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_5/Dente_6
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_7
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_7/Dente_8
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_9
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_9/Dente_10
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_11
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_11/Dente_12
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Gingiva
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Gingiva/Gingiva_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Gingiva/Gingiva_2/Gingiva_3
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow/L_Hand/L_Glove
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow/L_Hand/L_Glove/Luva_Esquerda
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow/R_Hand/R_Glove
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow/R_Hand/R_Glove/Luva_Direita
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
