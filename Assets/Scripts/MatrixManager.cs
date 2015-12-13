@@ -79,6 +79,7 @@ public class MatrixManager : MonoBehaviour
                 }
             }
         }
+        PushMatrix();  // Save a copy of the initial matrix. 
     }
 
 	Transform CreateEndBlock(string name, Transform parentTower, int height)

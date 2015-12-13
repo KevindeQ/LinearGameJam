@@ -39,8 +39,6 @@ public class PlayerManager : MonoBehaviour
             {
                 puzzleLocation = Location;
                 puzzlePosition = transform.localPosition;
-
-                puzzleMatrixManager.PushMatrix();
             }
 
             int diff = 0;
@@ -49,8 +47,11 @@ public class PlayerManager : MonoBehaviour
                 case 0:
                     matrixManager = preMultiplyMatrixManager;
                     transform.parent = matrixManager.transform.root;
-                    Location = Vector2.zero;
-                    transform.localPosition = new Vector3(0 - matrixManager.GetMatrix().GetColumnCount() / 2.0f, 0, -1 * (0 - matrixManager.GetMatrix().GetRowCount() / 2.0f));
+                    Location = matrixManager.GetMatrix().StartLocation;
+                    transform.localPosition = new Vector3(
+                        matrixManager.GetMatrix().GetColumnCount() - 1 - matrixManager.GetMatrix().GetColumnCount() / 2.0f,
+                        0,
+                        -1 * (matrixManager.GetMatrix().GetRowCount() - 1 - matrixManager.GetMatrix().GetRowCount() / 2.0f));
                     diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
                     transform.Translate(0, diff - 1, 0);
                     break;
@@ -65,8 +66,11 @@ public class PlayerManager : MonoBehaviour
                 case 2:
                     matrixManager = postMultiplyMatrixManager;
                     transform.parent = matrixManager.transform.root;
-                    Location = Vector2.zero;
-                    transform.localPosition = new Vector3(0 - matrixManager.GetMatrix().GetColumnCount() / 2.0f, 0, -1 * (0 - matrixManager.GetMatrix().GetRowCount() / 2.0f));
+                    Location = matrixManager.GetMatrix().StartLocation;
+                    transform.localPosition = new Vector3(
+                        matrixManager.GetMatrix().GetColumnCount() - 1 - matrixManager.GetMatrix().GetColumnCount() / 2.0f,
+                        0,
+                        -1 * (matrixManager.GetMatrix().GetRowCount() - 1 - matrixManager.GetMatrix().GetRowCount() / 2.0f));
                     diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
                     transform.Translate(0, diff - 1, 0);
                     break;
@@ -209,7 +213,7 @@ public class PlayerManager : MonoBehaviour
             matrixManager.IncreaseHeight(Location);
             transform.Translate(0, 1, 0);
 
-            FakeApplyMatrix();
+            UpdatePuzzleMatrix();
         }
 
         if (Input.GetKeyDown(KeyCode.Z) && ctc.selected != 1)
@@ -217,7 +221,7 @@ public class PlayerManager : MonoBehaviour
             if (matrixManager.DecreaseHeight(Location))
                 transform.Translate(0, -1, 0);
 
-            FakeApplyMatrix();
+            UpdatePuzzleMatrix();
         }
 
         if (ctc.selected != 1 && Input.GetKeyDown(KeyCode.Return))
@@ -257,16 +261,17 @@ public class PlayerManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
     }
 
-    public void FakeApplyMatrix()
+    public void UpdatePuzzleMatrix()
     {
+        // Compute pre x puzzle x post. 
         Matrix NewMatrix = Matrix.Multiply(
                 preMultiplyMatrixManager.GetMatrix(), puzzleMatrixManager.PopMatrix());
         NewMatrix = Matrix.Multiply(NewMatrix, postMultiplyMatrixManager.GetMatrix());
-
+        
         puzzleMatrixManager.ModifyMatrix(NewMatrix);
     }
 

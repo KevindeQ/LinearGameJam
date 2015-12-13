@@ -15,7 +15,7 @@ public class Crosshair : MonoBehaviour {
 	void Start() {
 		line = gameObject.GetComponent<LineRenderer> ();
 		line.enabled = false;
-		//Cursor.visible = false;
+		Cursor.visible = false;
 	}
 
     void Awake()
