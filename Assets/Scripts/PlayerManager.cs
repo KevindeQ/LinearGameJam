@@ -72,10 +72,11 @@ public class PlayerManager : MonoBehaviour {
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
                 transform.Translate(0, diff - 1, 1);
             }
+
 			//Only for the end position, defined at x = 0 and y = 0,
 			else if(ctc.Selected == 1) {
 				if (Location.y == 0 && Location.x == 0) {
-					var diff = Mathf.Abs(matrixManager.endPortal.position.y+1 - matrixManager.GetHeight(Location));
+					var diff = Mathf.Abs(matrixManager.EndHeight - matrixManager.GetHeight(Location));
 					if (diff <= MatrixManager.difference)
 						transform.Translate(0, diff , 1);
 				}

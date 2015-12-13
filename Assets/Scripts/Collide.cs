@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 public class Collide : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
-		switch (other.name) {
-			case "Banana":
+		switch (other.tag) {
+			case "Drop":
 				MatrixManager.difference = 2;
 				Destroy (other.gameObject);
 				break;
-			case "Minion":
+			case "EndPoint":
 				Destroy (other.gameObject);
 				
 				switch (SceneManager.GetActiveScene().buildIndex) {
