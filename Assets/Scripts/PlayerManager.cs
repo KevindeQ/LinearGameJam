@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Menu.Managers;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -252,6 +253,11 @@ public class PlayerManager : MonoBehaviour
             transform.localPosition = puzzlePosition;
 
             ctc.selected = 1;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
