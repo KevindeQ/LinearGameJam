@@ -62,7 +62,6 @@ public class PlayerManager : MonoBehaviour {
             }
         }
         #endregion
-
         #region Movement
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -72,6 +71,14 @@ public class PlayerManager : MonoBehaviour {
                 var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
                 transform.Translate(0, diff - 1, 1);
             }
+			//Only for the end position, defined at x = 0 and y = 0,
+			else if(ctc.Selected == 1) {
+				if (Location.y == 0 && Location.x == 0) {
+					var diff = Mathf.Abs(matrixManager.endPortal.position.y+1 - matrixManager.GetHeight(Location));
+					if (diff <= MatrixManager.difference)
+						transform.Translate(0, diff , 1);
+				}
+			}
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -86,7 +93,6 @@ public class PlayerManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log(Location);
             if (matrixManager.IsInBound(Location, Direction.West) && (matrixManager.CanReach(Location, Direction.West) || ctc.Selected != 1))
             {
                 Location = new Vector2(Location.x - 1, Location.y);

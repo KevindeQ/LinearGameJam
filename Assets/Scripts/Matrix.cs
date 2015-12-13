@@ -63,7 +63,8 @@ public class Matrix
         return new Matrix(result);
     }
 
-    public Vector2 StartLocation { get; set; }
+	public Vector2 StartLocation { get; set; }
+	public Vector2 EndLocation { get; set; }
     public Vector2 BananaLocation { get; set; }
 
     public Matrix Clone()
