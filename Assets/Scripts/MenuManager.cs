@@ -55,5 +55,6 @@ public class MenuManager : MonoBehaviour {
         }
 
         SceneManager.LoadScene(levelName);
+		//Application.LoadLevel (levelName);
     }
 }

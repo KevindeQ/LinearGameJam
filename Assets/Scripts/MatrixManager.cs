@@ -104,13 +104,13 @@ public class MatrixManager : MonoBehaviour
 
         switch (dir) {
             case Direction.North:
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= difference;
             case Direction.South:
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= difference;
             case Direction.West:
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= difference;
             case Direction.East:
-                return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= 1;
+				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= difference;
             default:
                 return false;
         }
