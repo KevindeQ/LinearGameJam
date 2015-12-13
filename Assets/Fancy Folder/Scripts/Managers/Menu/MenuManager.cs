@@ -52,9 +52,11 @@ namespace Menu.Managers {
 		}
 #endif
 
-		#endregion
+        #endregion
 
-		int _enterTrigger;
+        public static Matrix puzzleMatrix;
+
+        int _enterTrigger;
 		int _exitLeftTrigger;
 		int _exitRightTrigger;
 

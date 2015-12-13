@@ -12,7 +12,7 @@ namespace Menu.Managers {
 		}
 
 		// Use this for initialization
-		void Start () {
+		protected virtual void Start () {
 			var spacing = menuBar.GetComponent<VerticalLayoutGroup>().spacing;
 			var height = (150 + spacing) * menuBar.childCount - spacing;
 			var width = menuBar.sizeDelta.x;

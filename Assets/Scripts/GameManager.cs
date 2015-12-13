@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using Menu.Managers;
 
 public class GameManager : MonoBehaviour {
     public MatrixManager puzzleMatrixManager;

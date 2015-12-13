@@ -1,6 +1,7 @@
 ﻿using Menu.Managers;
 using Menu.Managers.Items;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuItemManager : MenuItemManager {
 	[SerializeField]
@@ -29,4 +30,22 @@ public class MainMenuItemManager : MenuItemManager {
 			Parent.Disable();
 		}
 	}
+
+    public void ChangeLevel (string levelName)
+    {
+        switch (levelName)
+        {
+            case "L1":
+                MenuManager.puzzleMatrix = LevelsMenuManager.level1matrix;
+                break;
+            case "L2":
+                MenuManager.puzzleMatrix = LevelsMenuManager.level2matrix;
+                break;
+            case "L3":
+                MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
+                break;
+        }
+
+        SceneManager.LoadScene(levelName);
+    }
 }
