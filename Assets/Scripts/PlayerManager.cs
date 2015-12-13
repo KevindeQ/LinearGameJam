@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Menu.Managers;
 
 public class PlayerManager : MonoBehaviour {
     public Vector2 startPosition;

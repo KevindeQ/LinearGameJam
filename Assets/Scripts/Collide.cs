@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using Menu.Managers;
+using UnityEngine.SceneManagement;
 
 public class Collide : MonoBehaviour {
 
@@ -12,18 +13,18 @@ public class Collide : MonoBehaviour {
 			case "Minion":
 				Destroy (other.gameObject);
 				
-				switch (Application.loadedLevel) {
+				switch (SceneManager.GetActiveScene().buildIndex) {
 					case 1:
-						MenuManager.puzzleMatrix = MenuManager.level2matrix;
-						Application.LoadLevel("L2");
+						MenuManager.puzzleMatrix = LevelsMenuManager.level2matrix;
+                        SceneManager.LoadScene("L2");
 						break;
 					case 2:
-						MenuManager.puzzleMatrix = MenuManager.level3matrix;
-						Application.LoadLevel("L3");
+						MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
+                        SceneManager.LoadScene("L3");
 						break;
 					case 3:
-						MenuManager.puzzleMatrix = MenuManager.level3matrix;
-						Application.LoadLevel("L3");
+						MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
+                        SceneManager.LoadScene("L3");
 						break;
 					default:
 						break;
