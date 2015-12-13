@@ -14,45 +14,31 @@ public class BossController : MonoBehaviour
 	public static List<Vector2> HitOrderPositionList = new List<Vector2>();
 	public static bool done = false;
 
-    int NextHitIndex;
-
-
-    bool test = true;
+    bool AlreadyWinning = false;
+    bool AlreadyLosing = false;
+    public static bool losing = false;
 
     System.Random rnd = new System.Random();
 
 	void Start ()
     {
-        NextHitIndex = 0;
-
         SelectHitOrder();
         ModifyHitBoxes();
 	}
 	
 	void Update ()
     {
-    }
-
-    void HitBox(Vector2 Coordinates)
-    {
-        if (NextHitIndex < HitOrderList.Count && Coordinates == HitOrderList[NextHitIndex])
-            NextHitIndex += 1;
-        else if (HitLosingBox(Coordinates))
-            PlayerLost();
-
-        if (NextHitIndex >= HitOrderList.Count)
-            PlayerWin();
-    }
-
-    bool HitLosingBox(Vector2 Coordinates)
-    {
-        for(int Index = 0; Index < HitOrderList.Count; ++Index)
+        if (!AlreadyWinning && Crosshair.orderHit >= HitOrderList.Count - 1)
         {
-            if (Coordinates == HitOrderList[Index])
-                return true;
+            AlreadyWinning = true;
+            PlayerWin();
         }
 
-        return false;
+        if(!AlreadyLosing && losing)
+        {
+            AlreadyLosing = true;
+            PlayerLost();
+        }
     }
 
     void PlayerWin()
