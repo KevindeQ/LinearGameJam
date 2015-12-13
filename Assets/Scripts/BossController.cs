@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class BossController : MonoBehaviour
     public int MaxHitCount;
     int NextHitIndex;
     List<Vector2> HitOrderList = new List<Vector2>();
+
+    bool test = true;
 
     System.Random rnd = new System.Random();
 
@@ -22,11 +26,11 @@ public class BossController : MonoBehaviour
 	
 	void Update ()
     {
-	}
+    }
 
     void HitBox(Vector2 Coordinates)
     {
-        if (Coordinates == HitOrderList[NextHitIndex])
+        if (NextHitIndex < HitOrderList.Count && Coordinates == HitOrderList[NextHitIndex])
             NextHitIndex += 1;
         else if (HitLosingBox(Coordinates))
             PlayerLost();
@@ -48,12 +52,81 @@ public class BossController : MonoBehaviour
 
     void PlayerWin()
     {
-
+        float duration = 1.0f;
+        float magnitude = 0.2f;
+        StartCoroutine(Shake(duration, magnitude));
+        StartCoroutine(DropBoss(duration));
+        StartCoroutine(GoToWinScreen(5 * duration));
     }
 
     void PlayerLost()
     {
+        StartCoroutine(GoToLoseScreen());
+    }
 
+    IEnumerator Shake(float duration, float magnitude)
+    {
+        float elapsed = 0.0f;
+
+        Vector3 originalCamPos = Camera.main.transform.position;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            float percentComplete = elapsed / duration;
+            float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+            // map value to [-1, 1]
+            float x = Random.value * 2.0f - 1.0f;
+            float y = Random.value * 2.0f - 1.0f;
+            x *= magnitude * damper;
+            y *= magnitude * damper;
+
+            Camera.main.transform.position = new Vector3(x + originalCamPos.x, y + originalCamPos.y, originalCamPos.z); ;
+
+            yield return null;
+        }
+
+        Camera.main.transform.position = originalCamPos;
+    }
+
+    IEnumerator DropBoss(float duration)
+    {
+        List<GameObject> objects = new List<GameObject>()
+        {
+            GameObject.Find("Boss/Mesh/Ring 6").gameObject,
+            GameObject.Find("Boss/Mesh/Ring 5").gameObject,
+            GameObject.Find("Boss/Mesh/Ring 4").gameObject,
+            GameObject.Find("Boss/Mesh/Ring 3").gameObject,
+            GameObject.Find("Boss/Mesh/Ring 2").gameObject,
+            GameObject.Find("Boss/Mesh/Ring 1").gameObject,
+        };
+
+        yield return new WaitForSeconds(duration);
+
+        foreach (GameObject obj in objects)
+        {
+            for (int ChildIndex = 0; ChildIndex < obj.transform.childCount; ++ChildIndex)
+            {
+                GameObject child = obj.transform.GetChild(ChildIndex).gameObject;
+                child.AddComponent<Rigidbody>();
+            }
+
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator GoToWinScreen(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene("Main Menu Scene");
+    }
+
+    IEnumerator GoToLoseScreen()
+    {
+        SceneManager.LoadScene("Main Menu Scene");
+        yield return null;
     }
 
     void SelectHitOrder()
