@@ -9,6 +9,7 @@ public class Crosshair : MonoBehaviour {
 	RaycastHit hit;
 	float range = 50;
 	bool hitBoss = false;
+	public static int orderHit = -1;
 
 	LineRenderer line;
 	void Start() {
@@ -27,6 +28,7 @@ public class Crosshair : MonoBehaviour {
 			StopCoroutine("Fire");
 			StartCoroutine("Fire");
 		}
+		Debug.Log (orderHit);
 	}
 
 	IEnumerator Fire() {
@@ -35,10 +37,15 @@ public class Crosshair : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			line.SetPosition(0, this.transform.position);
 			if (Physics.Raycast (ray, out hit, range)) {
-				if (hit.collider.gameObject.tag == "Boss") {
+				//if (hit.collider.gameObject.tag == "Boss") {
 					line.SetPosition(1, hit.point);
-					Debug.Log("hit");
-					hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
+					//Debug.Log("hit");
+				if (hit.collider.gameObject.transform.position.x == BossController.HitOrderPositionList [orderHit+1].x
+				   && hit.collider.gameObject.transform.position.y == BossController.HitOrderPositionList [orderHit+1].y)
+					hit.collider.gameObject.GetComponent<Renderer> ().material.color = Color.red;
+				//}
+				else {
+					Debug.Log ("DeATH");
 				}
 			}
 			else
@@ -47,5 +54,6 @@ public class Crosshair : MonoBehaviour {
 			yield return null;
 		}
 		line.enabled = false;
+		orderHit++;
 	}
 }
