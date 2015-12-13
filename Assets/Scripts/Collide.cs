@@ -3,18 +3,34 @@ using System.Collections;
 
 public class Collide : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnTriggerEnter(Collider other) {
-		MatrixManager.difference = 2;
-		Destroy(other.gameObject);
+		switch (other.name) {
+			case "Banana":
+				MatrixManager.difference = 2;
+				Destroy (other.gameObject);
+				break;
+			case "Minion":
+				Destroy (other.gameObject);
+				
+				switch (Application.loadedLevel) {
+					case 1:
+						MenuManager.puzzleMatrix = MenuManager.level2matrix;
+						Application.LoadLevel("L2");
+						break;
+					case 2:
+						MenuManager.puzzleMatrix = MenuManager.level3matrix;
+						Application.LoadLevel("L3");
+						break;
+					case 3:
+						MenuManager.puzzleMatrix = MenuManager.level3matrix;
+						Application.LoadLevel("L3");
+						break;
+					default:
+						break;
+				}
+				break;
+
+		}
+
 	}
 }

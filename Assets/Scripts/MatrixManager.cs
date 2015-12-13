@@ -4,96 +4,184 @@ using System.Collections;
 public class MatrixManager : MonoBehaviour
 {
 	public Transform block;
-    public Vector2 startTower;
-	public Vector2 drop;
-	public PlayerManager playerManager;
-	public DropManager dropManager;
+	public Transform startBlock;
+	public Transform endBlock;
+	public Transform banana;
+	public Transform endPortal;
 
-	public static int difference = 1;
-	int[, ] matrix;
+    public static int difference = 1;
 
-	// Use this for initialization
-	void Start () {
-		matrix = new int[, ]
-        {
-			{ 1, 2, 3, 4 },
-			{ 2, 4, 4, 5 },
-            { 3, 4, 5, 8 },
-        };
-        
-        int rows = matrix.GetLength(0);
-        int columns = matrix.GetLength(1);
+    Matrix matrix;
+    Matrix storedMatrix;
+    Vector3 startPosition;
 
-		Vector3 startPosition = Vector3.zero;
-		Vector3 dropPosition = Vector3.zero;
+    public void Init ()
+    {
+        int rows = matrix.GetRowCount();
+        int columns = matrix.GetColumnCount();
 
         for (int col = 0; col < columns; col++)
         {
             for (int row = 0; row < rows; row++)
             {
                 GameObject tower = new GameObject();
-                tower.transform.position = new Vector3(col - columns / 2.0f, 0, -1 * (row - rows / 2.0f));
-                tower.name = string.Format("Tower ({0}, {1})", col, row);
                 tower.transform.parent = transform;
-
+                tower.transform.localPosition = new Vector3(col - columns / 2.0f, 0, -1 * (row - rows / 2.0f));
+                tower.name = string.Format("Tower ({0}, {1})", col, row);
+                
                 for (int i = 0; i < matrix[row, col]; i++)
                 {
-                    var blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
+                    Transform blockInst;
+                    if (col == matrix.StartLocation.x && row == matrix.StartLocation.y && i + 1 == matrix[row, col])
+                        blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform, true);
+                    else
+                        blockInst = CreateBlock(string.Format("Block {0}", i + 1), tower.transform);
 
-                    if (row == startTower.x && col == startTower.y)
+                    if (col == matrix.BananaLocation.x && row == matrix.BananaLocation.y)
                     {
-                        startPosition = blockInst.position;
-					} 
-					if (row == drop.x && col == drop.y)
+                        if (banana != null){
+							banana.position = blockInst.position;
+						}
+                    }
+
+					if (col == matrix.EndLocation.x && row == matrix.EndLocation.y)
 					{
-						dropPosition = blockInst.position;
+						if (endPortal != null){
+							endPortal.position = blockInst.position;
+							endPortal.Translate(0,Random.Range(0,2),1);
+							for(int n = 0; n < endPortal.position.y+1; n++) {
+								CreateEndBlock("end block", endPortal.transform, n);
+								//CreateBlock(string.Format("Portal Block"), endPortal.transform, false);
+							}
+						}
 					}
                 }
             }
-		}
+        }
+    }
 
-        playerManager.transform.position = startPosition;
-        playerManager.Location = startTower;
+	void CreateEndBlock(string name, Transform parentTower, int height)
+	{
+		Transform blockInst = (Transform)Instantiate(this.endBlock);
 
-		dropManager.transform.position = dropPosition;
+		blockInst.name = name;
+		blockInst.parent = parentTower.transform;
+		blockInst.localPosition = new Vector3(0, (height-blockInst.parent.transform.position.y), 0);
 	}
 
-    Transform CreateBlock(string name, Transform parentTower)
+    public void ModifyMatrix(Matrix NewMatrix)
     {
-        Transform blockInst = (Transform)Instantiate(block);
+        for (int col = 0; col < matrix.GetColumnCount(); col++)
+        {
+            for (int row = 0; row < matrix.GetRowCount(); row++)
+            {
+                int oldValue = matrix[row, col];
+                int newValue = NewMatrix[row, col];
+                int diff = oldValue - newValue;
+                for (int i = 0; i < Mathf.Abs(diff); i++)
+                {
+                    if (diff < 0)
+                    {
+                        IncreaseHeight(col, row);
+						if (banana != null){
+	                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
+	                        {
+	                            banana.Translate(0, 1, 0);
+	                        }
+						}
+                    }
+                    else if (diff > 0)
+                    {
+                        DecreaseHeight(col, row);
+						if (banana != null){
+	                        if (matrix.BananaLocation.x == col && matrix.BananaLocation.y == row)
+	                        {
+	                            banana.Translate(0, -1, 0);
+	                        }
+						}
+                    }
+                }
+            }
+        }
+    }
+
+    Transform CreateBlock(string name, Transform parentTower, bool startBlock = false)
+    {
+        Transform blockInst = startBlock ? (Transform)Instantiate(this.startBlock) : (Transform)Instantiate(block);
         blockInst.name = name;
         blockInst.parent = parentTower.transform;
         blockInst.localPosition = new Vector3(0, parentTower.childCount - 1, 0);
 
+        if (startBlock)
+        {
+            startPosition = blockInst.position;
+            matrix.StartLocation = MenuManager.puzzleMatrix.StartLocation;
+        }
         return blockInst;
     }
 
     void RemoveBlock(Transform parentTower)
     {
-        Destroy(parentTower.GetChild(parentTower.childCount - 1).gameObject);
+        DestroyImmediate(parentTower.GetChild(parentTower.childCount - 1).gameObject);
     }
 
-	public bool CanReach (Direction dir)
+	public bool CanReach (Vector2 location, Direction dir)
     {
-        int locationX = (int)playerManager.Location.x;
-        int locationY = (int)playerManager.Location.y;
+        int locationX = (int)location.x;
+        int locationY = (int)location.y;
 
         switch (dir) {
             case Direction.North:
-                if (locationY - 1 == -1) return false;
 				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY - 1, locationX]) <= difference;
             case Direction.South:
-                if (locationY + 1 == matrix.GetLength(0)) return false;
 				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY + 1, locationX]) <= difference;
             case Direction.West:
-                if (locationX - 1 == -1) return false;
 				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX - 1]) <= difference;
             case Direction.East:
-                if (locationX + 1 == matrix.GetLength(1)) return false;
 				return Mathf.Abs(matrix[locationY, locationX] - matrix[locationY, locationX + 1]) <= difference;
             default:
                 return false;
         }
+    }
+
+    public bool IsInBound (Vector2 location, Direction dir)
+    {
+        int locationX = (int)location.x;
+        int locationY = (int)location.y;
+
+        switch (dir)
+        {
+            case Direction.North:
+                return !(locationY - 1 == -1);
+            case Direction.South:
+                return !(locationY + 1 == matrix.GetRowCount());
+            case Direction.West:
+                return !(locationX - 1 == -1);
+            case Direction.East:
+                return !(locationX + 1 == matrix.GetColumnCount());
+            default:
+                return false;
+        }
+    }
+
+    public Matrix GetMatrix ()
+    {
+        return matrix;
+    }
+
+    public void SetMatrix (Matrix newMatrix)
+    {
+        matrix = newMatrix;
+    }
+
+    public void PushMatrix()
+    {
+        storedMatrix = matrix.Clone();
+    }
+
+    public Matrix PopMatrix()
+    {
+        return storedMatrix;
     }
 
     public int GetHeight(Vector2 location)
@@ -151,5 +239,10 @@ public class MatrixManager : MonoBehaviour
 
         SetHeight(x, y, GetHeight(x, y) - 1);
         return true;
+    }
+
+    public Vector3 GetStartPosition ()
+    {
+        return startPosition;
     }
 }
