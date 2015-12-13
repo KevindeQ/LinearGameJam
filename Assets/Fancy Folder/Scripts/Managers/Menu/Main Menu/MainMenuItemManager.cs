@@ -31,6 +31,11 @@ public class MainMenuItemManager : MenuItemManager {
 		}
 	}
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
     public void ChangeLevel (string levelName)
     {
         switch (levelName)
