@@ -28,7 +28,7 @@ public class Crosshair : MonoBehaviour {
 			StopCoroutine("Fire");
 			StartCoroutine("Fire");
 		}
-		Debug.Log (orderHit);
+		//Debug.Log (orderHit);
 	}
 
 	IEnumerator Fire() {
@@ -45,7 +45,7 @@ public class Crosshair : MonoBehaviour {
 					hit.collider.gameObject.GetComponent<Renderer> ().material.color = Color.red;
 				//}
 				else {
-					Debug.Log ("DeATH");
+                    BossController.losing = true;
 				}
 			}
 			else

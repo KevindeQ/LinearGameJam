@@ -21,7 +21,7 @@ public class Collide : MonoBehaviour {
                     break;
                 case 3:
                     MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                    SceneManager.LoadScene("L3");
+                    SceneManager.LoadScene("L4");
                     break;
                 default:
                     break;
@@ -29,16 +29,15 @@ public class Collide : MonoBehaviour {
         }
     }
 	void OnTriggerEnter(Collider other) {
-		switch (other.tag) {
-			case "Drop":
-				MatrixManager.difference = 2;
-				Destroy (other.gameObject);
-				break;
-			case "EndPoint":
+        switch (other.tag)
+        {
+            case "Drop":
+                MatrixManager.difference = 2;
+                Destroy(other.gameObject);
+                break;
+            case "EndPoint":
                 nextLevel = true;
-				break;
-
-		}
-
+                break;
+        }
 	}
 }

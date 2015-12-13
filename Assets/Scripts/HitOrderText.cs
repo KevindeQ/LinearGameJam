@@ -30,7 +30,7 @@ public class HitOrderText : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (listVectors.Count > 0 && Crosshair.orderHit >= 0 && listVectors [Crosshair.orderHit] != null) {
+		if (listVectors.Count > 0 && Crosshair.orderHit >= 0 && Crosshair.orderHit < listVectors.Count && listVectors [Crosshair.orderHit] != null) {
 			text.text = listVectors [Crosshair.orderHit];
 		}
 		if (BossController.done) {
