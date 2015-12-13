@@ -3,16 +3,6 @@ using System.Collections;
 
 public class Collide : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnTriggerEnter(Collider other) {
 		MatrixManager.difference = 2;
 		Destroy(other.gameObject);
