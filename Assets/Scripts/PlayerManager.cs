@@ -3,8 +3,6 @@ using Menu.Managers;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Vector2 startPosition;
-
     MatrixManager matrixManager;
     Vector2 puzzleLocation;
     Vector3 puzzlePosition;
@@ -16,9 +14,16 @@ public class PlayerManager : MonoBehaviour
 
     private int lastSelected;
 
+    Vector3 targetPosition;
+    bool canMove;
+    Transform minion;
+    float speed;
+
     void Start()
     {
         lastSelected = ctc.selected;
+        canMove = true;
+        minion = transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -69,52 +74,131 @@ public class PlayerManager : MonoBehaviour
         #endregion
 
         #region Movement
-        if (Input.GetKeyDown(KeyCode.W))
+        if (canMove)
         {
-            if (matrixManager.IsInBound(Location, Direction.North) && (matrixManager.CanReach(Location, Direction.North) || ctc.selected != 1))
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                Location = new Vector2(Location.x, Location.y - 1);
-                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
-                transform.Translate(0, diff - 1, 1);
+                if (matrixManager.IsInBound(Location, Direction.North)) {
+                    if (ctc.selected != 1)
+                    {
+                        Location = new Vector2(Location.x, Location.y - 1);
+                        minion.eulerAngles = Vector3.up * 0;
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        transform.Translate(0, diff - 1, 1);
+                    } else if (matrixManager.CanReach(Location, Direction.North))
+                    {
+                        Location = new Vector2(Location.x, Location.y - 1);
+                        minion.eulerAngles = Vector3.up * 0;
+                        transform.Translate(0, 0, 1);
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        targetPosition = new Vector3(transform.position.x, transform.position.y + (diff - 1), transform.position.z);
+                        canMove = false;
+                        minion.GetComponent<Animator>().SetBool("Jump", true);
+                        speed = Mathf.Abs(Vector3.Distance(transform.position, targetPosition));
+                    }
+                }
+
+                //Only for the end position, defined at x = 0 and y = 0,
+                else if (ctc.selected == 1)
+                {
+                    if (Location.y == 0 && Location.x == 0)
+                    {
+                        var diff = Mathf.Abs(matrixManager.EndHeight - matrixManager.GetHeight(Location));
+                        if (diff <= MatrixManager.difference)
+                        {
+                            minion.eulerAngles = Vector3.up * 0;
+                            transform.Translate(0, 0, 1);
+                            targetPosition = new Vector3(transform.position.x, transform.position.y + diff, transform.position.z);
+                            canMove = false;
+                            minion.GetComponent<Animator>().SetBool("Jump", true);
+                            speed = Mathf.Abs(Vector3.Distance(transform.position, targetPosition));
+                        }
+                    }
+                }
             }
 
-			//Only for the end position, defined at x = 0 and y = 0,
-			else if(ctc.selected == 1) {
-				if (Location.y == 0 && Location.x == 0) {
-					var diff = Mathf.Abs(matrixManager.EndHeight - matrixManager.GetHeight(Location));
-					if (diff <= MatrixManager.difference)
-						transform.Translate(0, diff , 1);
-				}
-			}
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            if (matrixManager.IsInBound(Location, Direction.South) && (matrixManager.CanReach(Location, Direction.South) || ctc.selected != 1))
+            if (Input.GetKeyDown(KeyCode.S))
             {
-                Location = new Vector2(Location.x, Location.y + 1);
-                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
-                transform.Translate(0, diff - 1, -1);
+                if (matrixManager.IsInBound(Location, Direction.South))
+                {
+                    if (ctc.selected != 1)
+                    {
+                        Location = new Vector2(Location.x, Location.y + 1);
+                        minion.eulerAngles = Vector3.up * 180;
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        transform.Translate(0, diff - 1, -1);
+                    }
+                    else if (matrixManager.CanReach(Location, Direction.South))
+                    {
+                        Location = new Vector2(Location.x, Location.y + 1);
+                        minion.eulerAngles = Vector3.up * 180;
+                        transform.Translate(0, 0, -1);
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        targetPosition = new Vector3(transform.position.x, transform.position.y + (diff - 1), transform.position.z);
+                        canMove = false;
+                        minion.GetComponent<Animator>().SetBool("Jump", true);
+                        speed = Mathf.Abs(Vector3.Distance(transform.position, targetPosition));
+                    }
+                }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (matrixManager.IsInBound(Location, Direction.West) && (matrixManager.CanReach(Location, Direction.West) || ctc.selected != 1))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                Location = new Vector2(Location.x - 1, Location.y);
-                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
-                transform.Translate(-1, diff - 1, 0);
+                if (matrixManager.IsInBound(Location, Direction.West))
+                {
+                    if (ctc.selected != 1)
+                    {
+                        Location = new Vector2(Location.x - 1, Location.y);
+                        minion.eulerAngles = Vector3.up * 270;
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        transform.Translate(-1, diff - 1, 0);
+                    }
+                    else if (matrixManager.CanReach(Location, Direction.West))
+                    {
+                        Location = new Vector2(Location.x - 1, Location.y);
+                        minion.eulerAngles = Vector3.up * 270;
+                        transform.Translate(-1, 0, 0);
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        targetPosition = new Vector3(transform.position.x, transform.position.y + (diff - 1), transform.position.z);
+                        canMove = false;
+                        minion.GetComponent<Animator>().SetBool("Jump", true);
+                        speed = Mathf.Abs(Vector3.Distance(transform.position, targetPosition));
+                    }
+                }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (matrixManager.IsInBound(Location, Direction.East) && (matrixManager.CanReach(Location, Direction.East) || ctc.selected != 1))
+            if (Input.GetKeyDown(KeyCode.D))
             {
-                Location = new Vector2(Location.x + 1, Location.y);
-                var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
-                transform.Translate(1, diff - 1, 0);
+                if (matrixManager.IsInBound(Location, Direction.East))
+                {
+                    if (ctc.selected != 1)
+                    {
+                        Location = new Vector2(Location.x + 1, Location.y);
+                        minion.eulerAngles = Vector3.up * 90;
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        transform.Translate(1, diff - 1, 0);
+                    }
+                    else if (matrixManager.CanReach(Location, Direction.East))
+                    {
+                        Location = new Vector2(Location.x + 1, Location.y);
+                        minion.eulerAngles = Vector3.up * 90;
+                        transform.Translate(1, 0, 0);
+                        var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
+                        targetPosition = new Vector3(transform.position.x, transform.position.y + (diff - 1), transform.position.z);
+                        canMove = false;
+                        minion.GetComponent<Animator>().SetBool("Jump", true);
+                        speed = Mathf.Abs(Vector3.Distance(transform.position, targetPosition));
+                    }
+                }
+            }
+        } else
+        {
+            minion.GetComponent<Animator>().SetBool("Jump", false);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+            if (minion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
+            {
+                canMove = true;
             }
         }
         #endregion

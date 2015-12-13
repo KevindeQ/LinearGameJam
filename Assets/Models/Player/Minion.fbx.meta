@@ -728,6 +728,7 @@ ModelImporter:
     4300164: Overall_1_MeshPart19
     4300166: Overall_1_MeshPart20
     7400000: Idle
+    7400002: Jump
     9500000: //RootNode
     13700000: Body
     13700002: eye_drilled
@@ -785,7 +786,7 @@ ModelImporter:
       name: Idle
       takeName: Main
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -793,10 +794,232 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Minion_2_Olhos
+        weight: 1
+      - path: Minion_2_Olhos/Body
+        weight: 1
+      - path: Minion_2_Olhos/Body/Overall_1
+        weight: 1
+      - path: Minion_2_Olhos/Body/Overall_1/Overall_1_MeshPart0
+        weight: 1
+      - path: Minion_2_Olhos/Body/Overall_1/Overall_1_MeshPart1
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Hip
+        weight: 1
+      - path: Root/Hip/L_Leg
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot/L_Shoe
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot/L_Shoe/Sapato
+        weight: 1
+      - path: Root/Hip/L_Leg/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Root/Hip/R_Leg
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot/R_Shoe
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot/R_Shoe/Sapato_2
+        weight: 1
+      - path: Root/Hip/R_Leg/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Root/Hip/Spine_1
+        weight: 1
+      - path: Root/Hip/Spine_1/Head
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Boca
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Arma\xE7\xE3o_do_\xD3culos"
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Arma\xE7\xE3o_do_\xD3culos_2"
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Controle_dos_Olhos
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Detalhe_do_\xD3culos"
+        weight: 1
+      - path: "Root/Hip/Spine_1/Head/Eyes/Detalhe_do_\xD3culos_2"
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Fita
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Olho_Direito
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Olho_Esquerdo
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Direita_Baixo
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Direita_Cima
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Esquerda_Baixo
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Eyes/Palpebras/Palpebra_Esquerda_Cima
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Fio2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Fio3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Foi
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Foi1
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_1/Foi4
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Fio2_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Fio3_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Foi1_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Foi4_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_2/Foi_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Fio2_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Fio3_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Foi1_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Foi4_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Hair_3/Foi_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_13
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_13/Dente_14
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_15
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_15/Dente_16
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_17
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_17/Dente_18
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_19
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_19/Dente_20
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_21
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_21/Dente_22
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_23
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Dente_23/Dente_24
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Gingiva_4
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Gingiva_4/Gingiva_5
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Lower_Teeth/Gingiva_4/Gingiva_5/Gingiva_6
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente/Dente_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_3
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_3/Dente_4
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_5
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_5/Dente_6
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_7
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_7/Dente_8
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_9
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_9/Dente_10
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_11
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Dente_11/Dente_12
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Gingiva
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Gingiva/Gingiva_2
+        weight: 1
+      - path: Root/Hip/Spine_1/Head/Upper_Teeth/Gingiva/Gingiva_2/Gingiva_3
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow/L_Hand/L_Glove
+        weight: 1
+      - path: Root/Hip/Spine_1/L_Shoulder/L_Elbow/L_Hand/L_Glove/Luva_Esquerda
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow/R_Hand/R_Glove
+        weight: 1
+      - path: Root/Hip/Spine_1/R_Shoulder/R_Elbow/R_Hand/R_Glove/Luva_Direita
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Jump
+      takeName: Main
+      firstFrame: 60
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -1006,7 +1229,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.5
     meshCompression: 2
     addColliders: 0
     importBlendShapes: 1
@@ -1037,7 +1260,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: Root
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

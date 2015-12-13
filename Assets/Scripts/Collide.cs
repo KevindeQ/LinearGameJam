@@ -3,7 +3,31 @@ using Menu.Managers;
 using UnityEngine.SceneManagement;
 
 public class Collide : MonoBehaviour {
+    bool nextLevel;
 
+    void Update ()
+    {
+        if (nextLevel && transform.GetChild(0).GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
+        {
+            switch (SceneManager.GetActiveScene().buildIndex)
+            {
+                case 1:
+                    MenuManager.puzzleMatrix = LevelsMenuManager.level2matrix;
+                    SceneManager.LoadScene("L2");
+                    break;
+                case 2:
+                    MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
+                    SceneManager.LoadScene("L3");
+                    break;
+                case 3:
+                    MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
+                    SceneManager.LoadScene("L3");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 	void OnTriggerEnter(Collider other) {
 		switch (other.tag) {
 			case "Drop":
@@ -11,24 +35,7 @@ public class Collide : MonoBehaviour {
 				Destroy (other.gameObject);
 				break;
 			case "EndPoint":
-				Destroy (other.gameObject);
-				
-				switch (SceneManager.GetActiveScene().buildIndex) {
-					case 1:
-						MenuManager.puzzleMatrix = LevelsMenuManager.level2matrix;
-                        SceneManager.LoadScene("L2");
-						break;
-					case 2:
-						MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                        SceneManager.LoadScene("L3");
-						break;
-					case 3:
-						MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                        SceneManager.LoadScene("L3");
-						break;
-					default:
-						break;
-				}
+                nextLevel = true;
 				break;
 
 		}
