@@ -194,7 +194,7 @@ public class PlayerManager : MonoBehaviour
         } else
         {
             minion.GetComponent<Animator>().SetBool("Jump", false);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * 2 * Time.deltaTime);
 
             if (minion.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
             {
