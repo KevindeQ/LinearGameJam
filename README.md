@@ -1,7 +1,7 @@
 #Minions in Algebra Space
 ##Introduction 
 Balance is everything, where there is ying, there should also be yang. Same applies to Minions and bananas. However the archenemy of Minions has attack the Banana republic and kidnapped the one and only Banana King.
-And it all comes down to one Minion, HerpDerp, to save the Banana King from the cruel DeathCube.
+And it all comes down to one Minion, HerpDerp, to save the Banana King from the cruel DeathCube using his linear algebra skill.
 
 ###Normal level
 During this level, there are three matrices: pre, result and post. The initial value of the pre and post matrices is an identity matrix. In the game, the value is represented as a number of blocks. The player starts on a start block on the result matrix and he/she needs to find the way to the spaceship to defeat the DeathCube boss for the glory of the Banana republic. 
