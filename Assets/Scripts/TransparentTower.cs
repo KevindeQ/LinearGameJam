@@ -27,7 +27,9 @@ public class TransparentTower : MonoBehaviour {
 			foreach(RaycastHit hit in hits){
 				if(hit.transform.parent != null && hit.transform.tag == "Block") {
 					for (int n = 0; n < hit.transform.parent.childCount; n++) {
-						hit.transform.parent.GetChild(n).GetComponent<MeshRenderer>().material.color = new Color(1f,1f,1f,0.1f);
+                        MeshRenderer m = hit.transform.parent.GetChild(n).GetComponent<MeshRenderer>();
+                        if (m == null) continue;
+                        m.material.color = new Color(1f,1f,1f,0.1f);
 						transforms.Add(hit.transform.parent.GetChild(n).transform);
 					}
 				}

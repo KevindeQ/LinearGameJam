@@ -79,4 +79,6 @@ public class Matrix
 
         return new Matrix(NewMatrix);
     }
+
+    public int EndHeight { get; set; }
 }

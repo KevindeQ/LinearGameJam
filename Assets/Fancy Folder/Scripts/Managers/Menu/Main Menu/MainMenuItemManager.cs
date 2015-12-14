@@ -2,10 +2,17 @@
 using Menu.Managers.Items;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuItemManager : MenuItemManager {
 	[SerializeField]
 	MenuManager _nextMenu;
+
+    protected override void Awake ()
+    {
+        base.Awake();
+        GetComponentInChildren<Text>().text = name;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -38,18 +45,8 @@ public class MainMenuItemManager : MenuItemManager {
 
     public void ChangeLevel (string levelName)
     {
-        switch (levelName)
-        {
-            case "L1":
-                MenuManager.puzzleMatrix = LevelsMenuManager.level1matrix;
-                break;
-            case "L2":
-                MenuManager.puzzleMatrix = LevelsMenuManager.level2matrix;
-                break;
-            case "L3":
-                MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                break;
-        }
+        int index = int.Parse(levelName.Substring(1));
+        MenuManager.puzzleMatrix = LevelsMenuManager.levelMatrices[index - 1];
 
         SceneManager.LoadScene(levelName);
     }

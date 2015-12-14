@@ -9,22 +9,14 @@ public class Collide : MonoBehaviour {
     {
         if (nextLevel && transform.GetChild(0).GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle"))
         {
-            switch (SceneManager.GetActiveScene().buildIndex)
+            // To Boss
+            if (SceneManager.GetActiveScene().buildIndex == LevelsMenuManager.levelMatrices.Count)
             {
-                case 1:
-                    MenuManager.puzzleMatrix = LevelsMenuManager.level2matrix;
-                    SceneManager.LoadScene("L2");
-                    break;
-                case 2:
-                    MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                    SceneManager.LoadScene("L3");
-                    break;
-                case 3:
-                    MenuManager.puzzleMatrix = LevelsMenuManager.level3matrix;
-                    SceneManager.LoadScene("L4");
-                    break;
-                default:
-                    break;
+                SceneManager.LoadScene("Boss");
+            } else
+            {
+                MenuManager.puzzleMatrix = LevelsMenuManager.levelMatrices[SceneManager.GetActiveScene().buildIndex];
+                SceneManager.LoadScene("L" + (SceneManager.GetActiveScene().buildIndex + 1));
             }
         }
     }

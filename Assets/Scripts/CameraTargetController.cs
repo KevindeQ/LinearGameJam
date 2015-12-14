@@ -14,12 +14,6 @@ public class CameraTargetController : MonoBehaviour
         if (Input.GetKey("1")) selected = 0;
         if (Input.GetKey("2")) selected = 1;
         if (Input.GetKey("3")) selected = 2;
-        if (Input.GetKey("4")) selected = 3;
-        if (Input.GetKey("5")) selected = 4;
-        if (Input.GetKey("6")) selected = 5;
-        if (Input.GetKey("7")) selected = 6;
-        if (Input.GetKey("8")) selected = 7;
-        if (Input.GetKey("9")) selected = 8;
 
         if (selected < 0) selected = 0;
         if (selected >= targets.Count) selected = targets.Count;

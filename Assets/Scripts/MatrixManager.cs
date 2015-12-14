@@ -62,9 +62,9 @@ public class MatrixManager : MonoBehaviour
                             endTower.transform.Translate(0, 0, 1);
                             endTower.transform.parent = transform;
 
-                            for (int n = 0; n <= 2; n++) {
+                            for (int n = 0; n < matrix.EndHeight; n++) {
 								Transform endBlockInst = CreateEndBlock(string.Format("End block {0}", n + 1), endTower.transform, n);
-                                if (n == 2)
+                                if (n == matrix.EndHeight - 1)
                                 {
                                     Transform portal = (Transform)Instantiate(endPortal);
                                     portal.parent = endTower.transform;
