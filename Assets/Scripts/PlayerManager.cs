@@ -33,13 +33,13 @@ public class PlayerManager : MonoBehaviour
         #region Teleport
         if (lastSelected != ctc.selected)
         {
-            lastSelected = ctc.selected;
-
-            if (ctc.selected != 1)
+            if (lastSelected == 1)
             {
                 puzzleLocation = Location;
                 puzzlePosition = transform.localPosition;
             }
+
+            lastSelected = ctc.selected;
 
             int diff = 0;
             switch (ctc.selected)
