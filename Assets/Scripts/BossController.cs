@@ -54,6 +54,7 @@ public class BossController : MonoBehaviour
         StartCoroutine(Shake(duration, magnitude));
         StartCoroutine(DropBoss(duration));
         StartCoroutine(GoToWinScreen(5 * duration));
+        GetComponent<AudioSource>().Play();
     }
 
     void PlayerLost()

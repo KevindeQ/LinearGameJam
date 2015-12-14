@@ -32,6 +32,7 @@ public class Crosshair : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			StopCoroutine("Fire");
 			StartCoroutine("Fire");
+            GetComponent<AudioSource>().Play();
 		}
 		//Debug.Log (orderHit);
 	}
