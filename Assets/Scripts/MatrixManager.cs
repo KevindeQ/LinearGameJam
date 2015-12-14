@@ -9,11 +9,16 @@ public class MatrixManager : MonoBehaviour
 	public Transform banana;
 	public Transform endPortal;
 
-    public static int difference = 1;
+    public static int difference;
 
     Matrix matrix;
     Matrix storedMatrix;
     Vector3 startPosition;
+
+    void Awake()
+    {
+        difference = 1;
+    }
 
     public void Init ()
     {

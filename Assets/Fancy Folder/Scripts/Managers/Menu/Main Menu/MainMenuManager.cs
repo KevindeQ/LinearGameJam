@@ -9,7 +9,9 @@ namespace Menu.Managers {
 
 		void OnEnable () {
 			Animator.SetTrigger(EnterTrigger);
-		}
+
+            Cursor.visible = true;
+        }
 
 		// Use this for initialization
 		protected virtual void Start () {

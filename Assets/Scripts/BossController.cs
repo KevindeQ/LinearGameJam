@@ -10,21 +10,27 @@ public class BossController : MonoBehaviour
 
     public int MaxHitCount;
 
-	public static List<Vector2> HitOrderList = new List<Vector2>();
-	public static List<Vector2> HitOrderPositionList = new List<Vector2>();
-	public static bool done = false;
+    public static List<Vector2> HitOrderList;
+	public static List<Vector2> HitOrderPositionList;
+	public static bool done;
 
     bool AlreadyWinning = false;
     bool AlreadyLosing = false;
-    public static bool losing = false;
+    public static bool losing;
 
     System.Random rnd = new System.Random();
 
-	void Start ()
-    {
+    void Awake()
+    { 
+        HitOrderList = new List<Vector2>();
+        HitOrderPositionList = new List<Vector2>();
+
+        losing = false;
+        done = false;
+
         SelectHitOrder();
         ModifyHitBoxes();
-	}
+    }
 	
 	void Update ()
     {
@@ -111,12 +117,12 @@ public class BossController : MonoBehaviour
     IEnumerator GoToWinScreen(float duration)
     {
         yield return new WaitForSeconds(duration);
-        SceneManager.LoadScene("Menu Scene");
+        SceneManager.LoadScene("Win Scene");
     }
 
     IEnumerator GoToLoseScreen()
     {
-        SceneManager.LoadScene("Menu Scene");
+        SceneManager.LoadScene("Lose Scene");
         yield return null;
     }
 
