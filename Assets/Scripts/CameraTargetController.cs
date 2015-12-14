@@ -11,8 +11,6 @@ public class CameraTargetController : MonoBehaviour
         GameObject target = targets[selected];
         transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.05f);
 
-        if (selected == 0 || selected == 2) return;
-
         if (Input.GetKey("1")) selected = 0;
         if (Input.GetKey("2")) selected = 1;
         if (Input.GetKey("3")) selected = 2;

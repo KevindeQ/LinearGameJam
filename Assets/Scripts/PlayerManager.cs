@@ -232,36 +232,11 @@ public class PlayerManager : MonoBehaviour
 
         if (ctc.selected != 1 && Input.GetKeyDown(KeyCode.Return))
         {
-            int rows = preMultiplyMatrixManager.GetMatrix().GetRowCount();
-            int cols = preMultiplyMatrixManager.GetMatrix().GetColumnCount();
-
-            preMultiplyMatrixManager.ModifyMatrix(Matrix.DefaultMatrix(cols, rows));
-            postMultiplyMatrixManager.ModifyMatrix(Matrix.DefaultMatrix(cols, rows));
-
-            matrixManager = puzzleMatrixManager;
-            transform.parent = matrixManager.transform.root;
-            Location = puzzleLocation;
-            transform.localPosition = puzzlePosition;
-            var diff = matrixManager.GetHeight(Location) - (int)transform.localPosition.y;
-            transform.Translate(0, diff - 1, 0);
-
             ctc.selected = 1;
         }
 
         if (ctc.selected != 1 && Input.GetKeyDown(KeyCode.Escape))
         {
-            int rows = preMultiplyMatrixManager.GetMatrix().GetRowCount();
-            int cols = preMultiplyMatrixManager.GetMatrix().GetColumnCount();
-
-            preMultiplyMatrixManager.ModifyMatrix(Matrix.DefaultMatrix(cols, rows));
-            postMultiplyMatrixManager.ModifyMatrix(Matrix.DefaultMatrix(cols, rows));
-            puzzleMatrixManager.ModifyMatrix(puzzleMatrixManager.PopMatrix());
-
-            matrixManager = puzzleMatrixManager;
-            transform.parent = matrixManager.transform.root;
-            Location = puzzleLocation;
-            transform.localPosition = puzzlePosition;
-
             ctc.selected = 1;
         }
 
